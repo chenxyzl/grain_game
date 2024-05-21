@@ -1,0 +1,18 @@
+syntax = "proto3";
+package pbo;
+option  go_package = "grain_game/proto/pbo";
+
+//请求
+message ReqPack {
+    uint64 sn = 1; //流水号 request/reply
+    int32 rpcId = 2; //rpcId all
+    bytes data = 4; //消息体 all
+}
+//应答
+message ReplyPack {
+    uint64 sn = 1; //流水号 request/reply
+    int32 rpcId = 2; //rpcId all
+    int32 code = 3; //错误码 reply
+    bytes data = 4; //消息体 all
+    string msg = 5; //错误消息,可能有
+}

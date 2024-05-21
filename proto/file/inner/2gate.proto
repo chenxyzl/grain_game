@@ -1,0 +1,19 @@
+syntax = "proto3";
+package pbi;
+option  go_package = "grain_game/proto/pbi";
+
+//online
+message Online {
+    message Request {}
+    message Reply {}
+}
+
+//offline
+message Offline {
+    message Notify {}
+}
+
+//Kick
+message Kick{
+    message Notify {}
+}

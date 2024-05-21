@@ -1,0 +1,4 @@
+syntax = "proto3";
+package pbi;
+option  go_package = "grain_game/proto/pbi";
+

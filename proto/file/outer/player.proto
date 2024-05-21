@@ -1,0 +1,32 @@
+syntax = "proto3";
+package pbo;
+option  go_package = "grain_game/proto/pbo";
+
+/*
+用户rpc,id范围:10000~19999
+*/
+
+//心跳
+message Heartbeat {
+    int32 rpcId = 10000;
+    message Request {}
+    message Reply {}
+}
+
+//获取用户数据
+message GetUserInfo {
+    int32 rpcId = 10001;
+    message Request {}
+    message Reply {
+        PlayerInfo playerInfo = 1; //自己的玩家信息
+    }
+    message  PlayerInfo {
+        uint64 uid = 1; //uid
+        string name = 2; //名字
+        string icon = 3; //icon
+        string des = 4; //描述
+        repeated uint64 friendIds = 5; //拥有的好友Id
+        repeated uint64 groupIds = 6; //全部的的群Id
+        repeated uint64 selfGroupIds = 7; //自己拥有的群Id
+    }
+}
