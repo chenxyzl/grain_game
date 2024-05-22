@@ -99,7 +99,7 @@ func (wss *WebsocketServer) helpersHighLevelHandler(w http.ResponseWriter, r *ht
 }
 
 func (wss *WebsocketServer) createSession(conn net.Conn) {
-	sess := wss.System().Spawn(func() actor.IActor { return newSession(wss.Self(), conn) }, actor.WithOptsKindName(common1.Session))
+	sess := wss.System().Spawn(func() actor.IActor { return newSession(wss.Self(), conn) }, actor.WithOptsKindName(common1.SessionKind))
 	wss.sessions[sess.GetId()] = sess
 	defer func() { delete(wss.sessions, sess.GetId()) }()
 	wss.Logger().Info("session created", "id", sess.GetId())
