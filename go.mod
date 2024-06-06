@@ -4,7 +4,7 @@ go 1.22
 
 require (
  	github.com/gobwas/ws v1.4.0
-	github.com/chenxyzl/grain v0.0.0-20240521093852-fd39a5607cda
+	github.com/chenxyzl/grain v1.0.2
 )
 
 

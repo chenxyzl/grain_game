@@ -1,6 +1,6 @@
 syntax = "proto3";
-package pbo;
-option  go_package = "grain_game/proto/pbo";
+package ret;
+option  go_package = "grain_game/proto/gen/ret";
 
 /*
 用户rpc,id范围:10000~19999
@@ -23,10 +23,5 @@ message GetUserInfo {
     message  PlayerInfo {
         uint64 uid = 1; //uid
         string name = 2; //名字
-        string icon = 3; //icon
-        string des = 4; //描述
-        repeated uint64 friendIds = 5; //拥有的好友Id
-        repeated uint64 groupIds = 6; //全部的的群Id
-        repeated uint64 selfGroupIds = 7; //自己拥有的群Id
     }
 }

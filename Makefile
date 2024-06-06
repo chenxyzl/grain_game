@@ -56,8 +56,7 @@ else
 endif
 
 proto: version
-	protoc -I=./proto/file --go-new_out=paths=source_relative:./proto/gen ./proto/file/outer/*.proto
-	protoc -I=./proto/file --go-new_out=paths=source_relative:./proto/gen ./proto/file/common/*.proto
 	protoc -I=./proto/file --go-new_out=paths=source_relative:./proto/gen ./proto/file/inner/*.proto
+	protoc -I=./proto/file --go-new_out=paths=source_relative:./proto/gen ./proto/file/ret/*.proto
 
 .PHONY: proto

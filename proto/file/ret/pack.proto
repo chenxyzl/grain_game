@@ -1,6 +1,6 @@
 syntax = "proto3";
-package pbo;
-option  go_package = "grain_game/proto/pbo";
+package ret;
+option  go_package = "grain_game/proto/gen/ret";
 
 //请求
 message ReqPack {

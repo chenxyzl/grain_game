@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/chenxyzl/grain/actor"
+	"github.com/chenxyzl/grain/utils/al/safemap"
 	"github.com/chenxyzl/grain/utils/helper"
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"
@@ -24,11 +25,11 @@ type WebsocketServer struct {
 	path     string
 	host     string
 	port     string
-	sessions map[string]*actor.ActorRef
+	sessions *safemap.SafeMap[string, *actor.ActorRef]
 }
 
 func NewWebsocketServer(path, host, port string) *WebsocketServer {
-	return &WebsocketServer{path: path, host: host, port: port}
+	return &WebsocketServer{path: path, host: host, port: port, sessions: safemap.NewM[string, *actor.ActorRef]()}
 }
 
 func (wss *WebsocketServer) Started() {
@@ -100,8 +101,8 @@ func (wss *WebsocketServer) helpersHighLevelHandler(w http.ResponseWriter, r *ht
 
 func (wss *WebsocketServer) createSession(conn net.Conn) {
 	sess := wss.System().Spawn(func() actor.IActor { return newSession(wss.Self(), conn) }, actor.WithOptsKindName(common1.SessionKind))
-	wss.sessions[sess.GetId()] = sess
-	defer func() { delete(wss.sessions, sess.GetId()) }()
+	wss.sessions.Set(sess.GetId(), sess)
+	defer func() { wss.sessions.Delete(sess.GetId()); wss.System().Poison(sess) }()
 	wss.Logger().Info("session created", "id", sess.GetId())
 	//read msg
 	for {
@@ -133,7 +134,6 @@ func (wss *WebsocketServer) createSession(conn net.Conn) {
 		if err != nil {
 			wss.Logger().Error("sess unmarshal err", "id", sess.GetId(), "err", err)
 		}
-		//todo rpcId to msgBody?
 		actor.NoEntrySend(wss.System(), sess, reqPack)
 	}
 }

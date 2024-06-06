@@ -1,3 +1,0 @@
-syntax = "proto3";
-package pbc;
-option  go_package = "grain_game/proto/pbc";

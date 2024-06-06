@@ -1,0 +1,10 @@
+syntax = "proto3";
+package ret;
+option  go_package = "grain_game/proto/gen/ret";
+
+import "ret/code.proto";
+
+message Error {
+    Code code = 1; //错误码
+    string des = 2; //描述
+}

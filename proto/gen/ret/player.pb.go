@@ -2,9 +2,9 @@
 // versions:
 // 	protoc-gen-go v1.30.0
 // 	protoc        v3.5.1
-// source: outer/player.proto
+// source: ret/player.proto
 
-package pbo
+package ret
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -32,7 +32,7 @@ type Heartbeat struct {
 func (x *Heartbeat) Reset() {
 	*x = Heartbeat{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_outer_player_proto_msgTypes[0]
+		mi := &file_ret_player_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -45,7 +45,7 @@ func (x *Heartbeat) String() string {
 func (*Heartbeat) ProtoMessage() {}
 
 func (x *Heartbeat) ProtoReflect() protoreflect.Message {
-	mi := &file_outer_player_proto_msgTypes[0]
+	mi := &file_ret_player_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -58,7 +58,7 @@ func (x *Heartbeat) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Heartbeat.ProtoReflect.Descriptor instead.
 func (*Heartbeat) Descriptor() ([]byte, []int) {
-	return file_outer_player_proto_rawDescGZIP(), []int{0}
+	return file_ret_player_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Heartbeat) GetRpcId() int32 {
@@ -80,7 +80,7 @@ type GetUserInfo struct {
 func (x *GetUserInfo) Reset() {
 	*x = GetUserInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_outer_player_proto_msgTypes[1]
+		mi := &file_ret_player_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -93,7 +93,7 @@ func (x *GetUserInfo) String() string {
 func (*GetUserInfo) ProtoMessage() {}
 
 func (x *GetUserInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_outer_player_proto_msgTypes[1]
+	mi := &file_ret_player_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -106,7 +106,7 @@ func (x *GetUserInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfo.ProtoReflect.Descriptor instead.
 func (*GetUserInfo) Descriptor() ([]byte, []int) {
-	return file_outer_player_proto_rawDescGZIP(), []int{1}
+	return file_ret_player_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *GetUserInfo) GetRpcId() int32 {
@@ -125,7 +125,7 @@ type Heartbeat_Request struct {
 func (x *Heartbeat_Request) Reset() {
 	*x = Heartbeat_Request{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_outer_player_proto_msgTypes[2]
+		mi := &file_ret_player_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -138,7 +138,7 @@ func (x *Heartbeat_Request) String() string {
 func (*Heartbeat_Request) ProtoMessage() {}
 
 func (x *Heartbeat_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_outer_player_proto_msgTypes[2]
+	mi := &file_ret_player_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -151,7 +151,7 @@ func (x *Heartbeat_Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Heartbeat_Request.ProtoReflect.Descriptor instead.
 func (*Heartbeat_Request) Descriptor() ([]byte, []int) {
-	return file_outer_player_proto_rawDescGZIP(), []int{0, 0}
+	return file_ret_player_proto_rawDescGZIP(), []int{0, 0}
 }
 
 type Heartbeat_Reply struct {
@@ -163,7 +163,7 @@ type Heartbeat_Reply struct {
 func (x *Heartbeat_Reply) Reset() {
 	*x = Heartbeat_Reply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_outer_player_proto_msgTypes[3]
+		mi := &file_ret_player_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -176,7 +176,7 @@ func (x *Heartbeat_Reply) String() string {
 func (*Heartbeat_Reply) ProtoMessage() {}
 
 func (x *Heartbeat_Reply) ProtoReflect() protoreflect.Message {
-	mi := &file_outer_player_proto_msgTypes[3]
+	mi := &file_ret_player_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -189,7 +189,7 @@ func (x *Heartbeat_Reply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Heartbeat_Reply.ProtoReflect.Descriptor instead.
 func (*Heartbeat_Reply) Descriptor() ([]byte, []int) {
-	return file_outer_player_proto_rawDescGZIP(), []int{0, 1}
+	return file_ret_player_proto_rawDescGZIP(), []int{0, 1}
 }
 
 type GetUserInfo_Request struct {
@@ -201,7 +201,7 @@ type GetUserInfo_Request struct {
 func (x *GetUserInfo_Request) Reset() {
 	*x = GetUserInfo_Request{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_outer_player_proto_msgTypes[4]
+		mi := &file_ret_player_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -214,7 +214,7 @@ func (x *GetUserInfo_Request) String() string {
 func (*GetUserInfo_Request) ProtoMessage() {}
 
 func (x *GetUserInfo_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_outer_player_proto_msgTypes[4]
+	mi := &file_ret_player_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -227,7 +227,7 @@ func (x *GetUserInfo_Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfo_Request.ProtoReflect.Descriptor instead.
 func (*GetUserInfo_Request) Descriptor() ([]byte, []int) {
-	return file_outer_player_proto_rawDescGZIP(), []int{1, 0}
+	return file_ret_player_proto_rawDescGZIP(), []int{1, 0}
 }
 
 type GetUserInfo_Reply struct {
@@ -241,7 +241,7 @@ type GetUserInfo_Reply struct {
 func (x *GetUserInfo_Reply) Reset() {
 	*x = GetUserInfo_Reply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_outer_player_proto_msgTypes[5]
+		mi := &file_ret_player_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -254,7 +254,7 @@ func (x *GetUserInfo_Reply) String() string {
 func (*GetUserInfo_Reply) ProtoMessage() {}
 
 func (x *GetUserInfo_Reply) ProtoReflect() protoreflect.Message {
-	mi := &file_outer_player_proto_msgTypes[5]
+	mi := &file_ret_player_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -267,7 +267,7 @@ func (x *GetUserInfo_Reply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfo_Reply.ProtoReflect.Descriptor instead.
 func (*GetUserInfo_Reply) Descriptor() ([]byte, []int) {
-	return file_outer_player_proto_rawDescGZIP(), []int{1, 1}
+	return file_ret_player_proto_rawDescGZIP(), []int{1, 1}
 }
 
 func (x *GetUserInfo_Reply) GetPlayerInfo() *GetUserInfo_PlayerInfo {
@@ -282,19 +282,14 @@ type GetUserInfo_PlayerInfo struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Uid          uint64   `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`                          //uid
-	Name         string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                         //名字
-	Icon         string   `protobuf:"bytes,3,opt,name=icon,proto3" json:"icon,omitempty"`                         //icon
-	Des          string   `protobuf:"bytes,4,opt,name=des,proto3" json:"des,omitempty"`                           //描述
-	FriendIds    []uint64 `protobuf:"varint,5,rep,packed,name=friendIds,proto3" json:"friendIds,omitempty"`       //拥有的好友Id
-	GroupIds     []uint64 `protobuf:"varint,6,rep,packed,name=groupIds,proto3" json:"groupIds,omitempty"`         //全部的的群Id
-	SelfGroupIds []uint64 `protobuf:"varint,7,rep,packed,name=selfGroupIds,proto3" json:"selfGroupIds,omitempty"` //自己拥有的群Id
+	Uid  uint64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`  //uid
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"` //名字
 }
 
 func (x *GetUserInfo_PlayerInfo) Reset() {
 	*x = GetUserInfo_PlayerInfo{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_outer_player_proto_msgTypes[6]
+		mi := &file_ret_player_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -307,7 +302,7 @@ func (x *GetUserInfo_PlayerInfo) String() string {
 func (*GetUserInfo_PlayerInfo) ProtoMessage() {}
 
 func (x *GetUserInfo_PlayerInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_outer_player_proto_msgTypes[6]
+	mi := &file_ret_player_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -320,7 +315,7 @@ func (x *GetUserInfo_PlayerInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetUserInfo_PlayerInfo.ProtoReflect.Descriptor instead.
 func (*GetUserInfo_PlayerInfo) Descriptor() ([]byte, []int) {
-	return file_outer_player_proto_rawDescGZIP(), []int{1, 2}
+	return file_ret_player_proto_rawDescGZIP(), []int{1, 2}
 }
 
 func (x *GetUserInfo_PlayerInfo) GetUid() uint64 {
@@ -337,97 +332,53 @@ func (x *GetUserInfo_PlayerInfo) GetName() string {
 	return ""
 }
 
-func (x *GetUserInfo_PlayerInfo) GetIcon() string {
-	if x != nil {
-		return x.Icon
-	}
-	return ""
-}
+var File_ret_player_proto protoreflect.FileDescriptor
 
-func (x *GetUserInfo_PlayerInfo) GetDes() string {
-	if x != nil {
-		return x.Des
-	}
-	return ""
-}
-
-func (x *GetUserInfo_PlayerInfo) GetFriendIds() []uint64 {
-	if x != nil {
-		return x.FriendIds
-	}
-	return nil
-}
-
-func (x *GetUserInfo_PlayerInfo) GetGroupIds() []uint64 {
-	if x != nil {
-		return x.GroupIds
-	}
-	return nil
-}
-
-func (x *GetUserInfo_PlayerInfo) GetSelfGroupIds() []uint64 {
-	if x != nil {
-		return x.SelfGroupIds
-	}
-	return nil
-}
-
-var File_outer_player_proto protoreflect.FileDescriptor
-
-var file_outer_player_proto_rawDesc = []byte{
-	0x0a, 0x12, 0x6f, 0x75, 0x74, 0x65, 0x72, 0x2f, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x2e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x12, 0x03, 0x70, 0x62, 0x6f, 0x22, 0x36, 0x0a, 0x09, 0x48, 0x65, 0x61,
-	0x72, 0x74, 0x62, 0x65, 0x61, 0x74, 0x12, 0x15, 0x0a, 0x05, 0x72, 0x70, 0x63, 0x49, 0x64, 0x18,
-	0x90, 0x4e, 0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x72, 0x70, 0x63, 0x49, 0x64, 0x1a, 0x09, 0x0a,
-	0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x07, 0x0a, 0x05, 0x52, 0x65, 0x70, 0x6c,
-	0x79, 0x22, 0xae, 0x02, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66,
-	0x6f, 0x12, 0x15, 0x0a, 0x05, 0x72, 0x70, 0x63, 0x49, 0x64, 0x18, 0x91, 0x4e, 0x20, 0x01, 0x28,
-	0x05, 0x52, 0x05, 0x72, 0x70, 0x63, 0x49, 0x64, 0x1a, 0x09, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x1a, 0x44, 0x0a, 0x05, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x3b, 0x0a, 0x0a,
-	0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x1b, 0x2e, 0x70, 0x62, 0x6f, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e,
-	0x66, 0x6f, 0x2e, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0a, 0x70,
-	0x6c, 0x61, 0x79, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x1a, 0xb6, 0x01, 0x0a, 0x0a, 0x50, 0x6c,
-	0x61, 0x79, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x12,
-	0x0a, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x69, 0x63,
-	0x6f, 0x6e, 0x12, 0x10, 0x0a, 0x03, 0x64, 0x65, 0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x03, 0x64, 0x65, 0x73, 0x12, 0x1c, 0x0a, 0x09, 0x66, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x49, 0x64,
-	0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x04, 0x52, 0x09, 0x66, 0x72, 0x69, 0x65, 0x6e, 0x64, 0x49,
-	0x64, 0x73, 0x12, 0x1a, 0x0a, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x73, 0x18, 0x06,
-	0x20, 0x03, 0x28, 0x04, 0x52, 0x08, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x73, 0x12, 0x22,
-	0x0a, 0x0c, 0x73, 0x65, 0x6c, 0x66, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49, 0x64, 0x73, 0x18, 0x07,
-	0x20, 0x03, 0x28, 0x04, 0x52, 0x0c, 0x73, 0x65, 0x6c, 0x66, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x49,
-	0x64, 0x73, 0x42, 0x16, 0x5a, 0x14, 0x67, 0x72, 0x61, 0x69, 0x6e, 0x5f, 0x67, 0x61, 0x6d, 0x65,
-	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x70, 0x62, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
-	0x6f, 0x33,
+var file_ret_player_proto_rawDesc = []byte{
+	0x0a, 0x10, 0x72, 0x65, 0x74, 0x2f, 0x70, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x2e, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x12, 0x03, 0x72, 0x65, 0x74, 0x22, 0x36, 0x0a, 0x09, 0x48, 0x65, 0x61, 0x72, 0x74,
+	0x62, 0x65, 0x61, 0x74, 0x12, 0x15, 0x0a, 0x05, 0x72, 0x70, 0x63, 0x49, 0x64, 0x18, 0x90, 0x4e,
+	0x20, 0x01, 0x28, 0x05, 0x52, 0x05, 0x72, 0x70, 0x63, 0x49, 0x64, 0x1a, 0x09, 0x0a, 0x07, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x07, 0x0a, 0x05, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22,
+	0xa9, 0x01, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12,
+	0x15, 0x0a, 0x05, 0x72, 0x70, 0x63, 0x49, 0x64, 0x18, 0x91, 0x4e, 0x20, 0x01, 0x28, 0x05, 0x52,
+	0x05, 0x72, 0x70, 0x63, 0x49, 0x64, 0x1a, 0x09, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x44, 0x0a, 0x05, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x3b, 0x0a, 0x0a, 0x70, 0x6c,
+	0x61, 0x79, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b,
+	0x2e, 0x72, 0x65, 0x74, 0x2e, 0x47, 0x65, 0x74, 0x55, 0x73, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f,
+	0x2e, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0a, 0x70, 0x6c, 0x61,
+	0x79, 0x65, 0x72, 0x49, 0x6e, 0x66, 0x6f, 0x1a, 0x32, 0x0a, 0x0a, 0x50, 0x6c, 0x61, 0x79, 0x65,
+	0x72, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x04, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x42, 0x1a, 0x5a, 0x18, 0x67,
+	0x72, 0x61, 0x69, 0x6e, 0x5f, 0x67, 0x61, 0x6d, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f,
+	0x67, 0x65, 0x6e, 0x2f, 0x72, 0x65, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
-	file_outer_player_proto_rawDescOnce sync.Once
-	file_outer_player_proto_rawDescData = file_outer_player_proto_rawDesc
+	file_ret_player_proto_rawDescOnce sync.Once
+	file_ret_player_proto_rawDescData = file_ret_player_proto_rawDesc
 )
 
-func file_outer_player_proto_rawDescGZIP() []byte {
-	file_outer_player_proto_rawDescOnce.Do(func() {
-		file_outer_player_proto_rawDescData = protoimpl.X.CompressGZIP(file_outer_player_proto_rawDescData)
+func file_ret_player_proto_rawDescGZIP() []byte {
+	file_ret_player_proto_rawDescOnce.Do(func() {
+		file_ret_player_proto_rawDescData = protoimpl.X.CompressGZIP(file_ret_player_proto_rawDescData)
 	})
-	return file_outer_player_proto_rawDescData
+	return file_ret_player_proto_rawDescData
 }
 
-var file_outer_player_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
-var file_outer_player_proto_goTypes = []interface{}{
-	(*Heartbeat)(nil),              // 0: pbo.Heartbeat
-	(*GetUserInfo)(nil),            // 1: pbo.GetUserInfo
-	(*Heartbeat_Request)(nil),      // 2: pbo.Heartbeat.Request
-	(*Heartbeat_Reply)(nil),        // 3: pbo.Heartbeat.Reply
-	(*GetUserInfo_Request)(nil),    // 4: pbo.GetUserInfo.Request
-	(*GetUserInfo_Reply)(nil),      // 5: pbo.GetUserInfo.Reply
-	(*GetUserInfo_PlayerInfo)(nil), // 6: pbo.GetUserInfo.PlayerInfo
+var file_ret_player_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_ret_player_proto_goTypes = []interface{}{
+	(*Heartbeat)(nil),              // 0: ret.Heartbeat
+	(*GetUserInfo)(nil),            // 1: ret.GetUserInfo
+	(*Heartbeat_Request)(nil),      // 2: ret.Heartbeat.Request
+	(*Heartbeat_Reply)(nil),        // 3: ret.Heartbeat.Reply
+	(*GetUserInfo_Request)(nil),    // 4: ret.GetUserInfo.Request
+	(*GetUserInfo_Reply)(nil),      // 5: ret.GetUserInfo.Reply
+	(*GetUserInfo_PlayerInfo)(nil), // 6: ret.GetUserInfo.PlayerInfo
 }
-var file_outer_player_proto_depIdxs = []int32{
-	6, // 0: pbo.GetUserInfo.Reply.playerInfo:type_name -> pbo.GetUserInfo.PlayerInfo
+var file_ret_player_proto_depIdxs = []int32{
+	6, // 0: ret.GetUserInfo.Reply.playerInfo:type_name -> ret.GetUserInfo.PlayerInfo
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -435,13 +386,13 @@ var file_outer_player_proto_depIdxs = []int32{
 	0, // [0:1] is the sub-list for field type_name
 }
 
-func init() { file_outer_player_proto_init() }
-func file_outer_player_proto_init() {
-	if File_outer_player_proto != nil {
+func init() { file_ret_player_proto_init() }
+func file_ret_player_proto_init() {
+	if File_ret_player_proto != nil {
 		return
 	}
 	if !protoimpl.UnsafeEnabled {
-		file_outer_player_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
+		file_ret_player_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Heartbeat); i {
 			case 0:
 				return &v.state
@@ -453,7 +404,7 @@ func file_outer_player_proto_init() {
 				return nil
 			}
 		}
-		file_outer_player_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+		file_ret_player_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetUserInfo); i {
 			case 0:
 				return &v.state
@@ -465,7 +416,7 @@ func file_outer_player_proto_init() {
 				return nil
 			}
 		}
-		file_outer_player_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+		file_ret_player_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Heartbeat_Request); i {
 			case 0:
 				return &v.state
@@ -477,7 +428,7 @@ func file_outer_player_proto_init() {
 				return nil
 			}
 		}
-		file_outer_player_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+		file_ret_player_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Heartbeat_Reply); i {
 			case 0:
 				return &v.state
@@ -489,7 +440,7 @@ func file_outer_player_proto_init() {
 				return nil
 			}
 		}
-		file_outer_player_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+		file_ret_player_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetUserInfo_Request); i {
 			case 0:
 				return &v.state
@@ -501,7 +452,7 @@ func file_outer_player_proto_init() {
 				return nil
 			}
 		}
-		file_outer_player_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+		file_ret_player_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetUserInfo_Reply); i {
 			case 0:
 				return &v.state
@@ -513,7 +464,7 @@ func file_outer_player_proto_init() {
 				return nil
 			}
 		}
-		file_outer_player_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+		file_ret_player_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GetUserInfo_PlayerInfo); i {
 			case 0:
 				return &v.state
@@ -530,18 +481,18 @@ func file_outer_player_proto_init() {
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: file_outer_player_proto_rawDesc,
+			RawDescriptor: file_ret_player_proto_rawDesc,
 			NumEnums:      0,
 			NumMessages:   7,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_outer_player_proto_goTypes,
-		DependencyIndexes: file_outer_player_proto_depIdxs,
-		MessageInfos:      file_outer_player_proto_msgTypes,
+		GoTypes:           file_ret_player_proto_goTypes,
+		DependencyIndexes: file_ret_player_proto_depIdxs,
+		MessageInfos:      file_ret_player_proto_msgTypes,
 	}.Build()
-	File_outer_player_proto = out.File
-	file_outer_player_proto_rawDesc = nil
-	file_outer_player_proto_goTypes = nil
-	file_outer_player_proto_depIdxs = nil
+	File_ret_player_proto = out.File
+	file_ret_player_proto_rawDesc = nil
+	file_ret_player_proto_goTypes = nil
+	file_ret_player_proto_depIdxs = nil
 }
