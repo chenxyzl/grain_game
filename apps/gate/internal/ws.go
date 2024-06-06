@@ -67,7 +67,7 @@ func (wss *WebsocketServer) Receive(ctx actor.Context) {
 
 func (wss *WebsocketServer) helpersHighLevelHandler(w http.ResponseWriter, r *http.Request) {
 	//recover
-	defer helper.RecoverInfo(func() string { return "session closed" }, wss.Logger())
+	defer helper.Recover(func(e any, trace string) { wss.Logger().Error("sess closed with error", "err", e, "trace", trace) })
 	//update to websocket connection
 	conn, _, _, err := ws.UpgradeHTTP(r, w)
 	if err != nil {

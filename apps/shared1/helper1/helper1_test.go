@@ -3,6 +3,7 @@ package helper1
 import (
 	"fmt"
 	"testing"
+	"time"
 )
 
 type testCase struct{}
@@ -30,4 +31,28 @@ type err struct {
 func Todo() interface{} {
 	var res *err
 	return res
+}
+
+func fp() {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("recover")
+		}
+	}()
+	i := 0
+	one_sec := time.NewTicker(1 * time.Second)
+	for i < 100 {
+		i++
+		select {
+		case r, ok := <-one_sec.C:
+			fmt.Println(r, ok)
+			if i == 10 {
+				panic("panic")
+			}
+		}
+	}
+}
+
+func TestPanic(t *testing.T) {
+	fp()
 }

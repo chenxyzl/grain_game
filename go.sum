@@ -6,6 +6,8 @@ github.com/chenxyzl/grain v0.0.0-20240521093852-fd39a5607cda h1:2mSazjF5P0cskhEc
 github.com/chenxyzl/grain v0.0.0-20240521093852-fd39a5607cda/go.mod h1:ClGxcqM1MNGaSNpYMxSQp3al5BTCM/YwR7sEF5UfsBs=
 github.com/chenxyzl/grain v1.0.2 h1:7c/6cKLQ7fi+pwD9zwl1zwplV7nEwm1+1tRqbkHWj38=
 github.com/chenxyzl/grain v1.0.2/go.mod h1:ClGxcqM1MNGaSNpYMxSQp3al5BTCM/YwR7sEF5UfsBs=
+github.com/chenxyzl/grain v1.0.3 h1:VOUh1psW9VFcqD0Q4vwmtzf1bakZ9RXFBcBEXg0GRak=
+github.com/chenxyzl/grain v1.0.3/go.mod h1:ClGxcqM1MNGaSNpYMxSQp3al5BTCM/YwR7sEF5UfsBs=
 github.com/coreos/go-semver v0.3.0 h1:wkHLiw0WNATZnSG7epLsujiMCgPAc9xhjJ4tgnAxmfM=
 github.com/coreos/go-semver v0.3.0/go.mod h1:nnelYz7RCh+5ahJtPPxZlU+153eP4D4r3EedlOD2RNk=
 github.com/coreos/go-semver v0.3.1 h1:yi21YpKnrx1gt5R+la8n5WgS0kCrsPp33dmEyHReZr4=
