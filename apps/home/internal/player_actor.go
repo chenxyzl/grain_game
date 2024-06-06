@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/chenxyzl/grain/actor"
 	"github.com/chenxyzl/grain/utils/helper"
+	"grain_game/apps/common1"
 	"grain_game/apps/shared1/helper1"
 	"grain_game/apps/shared1/iface1"
 	pbi "grain_game/proto/gen/inner"
@@ -65,6 +66,11 @@ func (p *Player) Receive(ctx actor.Context) {
 	case *pbi.Tick:
 		p.onTick()
 	default:
-		//todo rpc分发
+		if ctx.Sender().GetKind() == common1.SessionKind {
+			//todo 外部rpc分发
+		} else {
+			//todo 内部rpc分发
+		}
+
 	}
 }
