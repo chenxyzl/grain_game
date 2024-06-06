@@ -3,7 +3,7 @@ package internal
 import (
 	"github.com/chenxyzl/grain/actor"
 	pbi "grain_game/proto/gen/inner"
-	pbo "grain_game/proto/gen/outer"
+	"grain_game/proto/gen/ret"
 	"net"
 	"time"
 )
@@ -50,7 +50,7 @@ func (p *session) Receive(ctx actor.Context) {
 
 func (p *session) UnAuth(ctx actor.Context) {
 	switch msg := ctx.Message().(type) {
-	case *pbo.ReqPack:
+	case *ret.ReqPack:
 		msg.GetRpcId()
 	default:
 

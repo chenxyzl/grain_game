@@ -11,7 +11,7 @@ import (
 	"github.com/golang/protobuf/proto"
 	"grain_game/apps/common1"
 	"grain_game/apps/gate/internal/constant2"
-	pbo "grain_game/proto/gen/outer"
+	"grain_game/proto/gen/ret"
 	"io"
 	"net"
 	"net/http"
@@ -129,7 +129,7 @@ func (wss *WebsocketServer) createSession(conn net.Conn) {
 			return
 		}
 		//
-		reqPack := &pbo.ReqPack{}
+		reqPack := &ret.ReqPack{}
 		err = proto.Unmarshal(bts, reqPack)
 		if err != nil {
 			wss.Logger().Error("sess unmarshal err", "id", sess.GetId(), "err", err)

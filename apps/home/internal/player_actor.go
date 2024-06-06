@@ -22,7 +22,7 @@ type Player struct {
 }
 
 func NewPlayer() *Player {
-	return &Player{BaseEntity: iface1.NewBaseEntity()}
+	return &Player{BaseEntity: iface1.NewBaseEntity(), modules: make(map[string]iPlayerModuleLife)}
 }
 
 func (p *Player) Started() {
@@ -45,6 +45,7 @@ func (p *Player) Started() {
 func (p *Player) PreStop() {
 	if p.cancelTick != nil {
 		p.cancelTick()
+		p.cancelTick = nil
 	}
 	for idx, f := range p.modulesSl {
 		if cod := f.OnPreStop(); cod != ret.Code_Ok {

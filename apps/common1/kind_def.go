@@ -1,5 +1,7 @@
 package common1
 
 const (
-	SessionKind = "session"
+	WsServerKind = "ws_server"
+	SessionKind  = "session"
+	PlayerKind   = "player"
 )
