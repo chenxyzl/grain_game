@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+type iTestIface interface{}
 type testCase struct{}
 
 func TestNotNull(t *testing.T) {
@@ -19,7 +20,7 @@ func TestNotNull(t *testing.T) {
 	fmt.Println(res == nil)
 
 	var v1 *testCase
-	NotNull(0)
+	//NotNull(0) --compile error
 	NotNull(v1)
 }
 

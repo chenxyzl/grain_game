@@ -1,4 +1,4 @@
-package impl
+package bag
 
 import (
 	"grain_game/apps/home/internal/iface2"

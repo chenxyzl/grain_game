@@ -5,4 +5,5 @@ option  go_package = "grain_game/proto/gen/ret";
 enum Code {
     Ok = 0;
     IsNil = 1; //
+    IsFalse = 2;
 }

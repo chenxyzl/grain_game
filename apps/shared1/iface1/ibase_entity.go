@@ -14,7 +14,7 @@ type IEntity interface {
 	RegisterModule(module IModule)
 	//GetModule 获取Module
 	//期望GetModule[T model]()T; 可惜go不支持
-	getModule(module IModule) IModule
+	getModule(name string) IModule
 }
 
 type BaseEntity struct {
@@ -26,7 +26,8 @@ func NewBaseEntity() *BaseEntity {
 	return &BaseEntity{modules: make(map[string]IModule)}
 }
 
-// actor life
+/*---------------------------------------actor life---------------------------------------*/
+
 func (e *BaseEntity) Started()                  {}
 func (e *BaseEntity) PreStop()                  {}
 func (e *BaseEntity) Receive(ctx actor.Context) {}
@@ -40,19 +41,23 @@ func (e *BaseEntity) RegisterModule(module IModule) {
 	module.init(e)
 }
 
-func (e *BaseEntity) getModule(module IModule) IModule {
-	name := reflect.TypeOf(module).Elem().Name()
+func (e *BaseEntity) getModule(name string) IModule {
 	return e.modules[name]
 }
 
-func Get[MOD IModule](entity IEntity) MOD {
-	var module MOD
-	return entity.getModule(module).(MOD)
+func Get[T IModule](entity IEntity) T {
+	var modType = reflect.TypeOf(new(T)).Elem() //todo 考虑用组件名字来获取组件,减少反射
+	name := modType.Name()[1:]
+	mod := entity.getModule(name)
+	var zero T
+	if mod == nil {
+		return zero
+	}
+	return mod.(T)
 }
 
-func GetMust[MOD IModule](entity IEntity) MOD {
-	var module MOD
-	module = entity.getModule(module).(MOD)
-	v := helper1.NotNull(module, "not found module")
-	return v
+func GetMust[T IModule](entity IEntity) T {
+	com := Get[T](entity)
+	var t IModule = com
+	return helper1.NotNull(t, "module not found").(T)
 }
