@@ -5,6 +5,7 @@ import (
 	"github.com/chenxyzl/grain/actor"
 	"github.com/chenxyzl/grain/utils/helper"
 	"grain_game/apps/common1"
+	"grain_game/apps/home/internal/iface2"
 	"grain_game/apps/shared1/helper1"
 	"grain_game/apps/shared1/iface1"
 	pbi "grain_game/proto/gen/inner"
@@ -16,13 +17,13 @@ var _ actor.IActor = (*Player)(nil)
 
 type Player struct {
 	*iface1.BaseEntity
-	modules    map[string]iPlayerModuleLife
-	modulesSl  []iPlayerModuleLife //for range
+	modules    map[string]iface2.IPlayerModule
+	modulesSl  []IPlayerModuleLife //for range
 	cancelTick actor.CancelScheduleFunc
 }
 
 func NewPlayer() *Player {
-	return &Player{BaseEntity: iface1.NewBaseEntity(), modules: make(map[string]iPlayerModuleLife)}
+	return &Player{BaseEntity: iface1.NewBaseEntity(), modules: make(map[string]IPlayerModuleLife)}
 }
 
 func (p *Player) Started() {
@@ -30,12 +31,12 @@ func (p *Player) Started() {
 	//
 	for idx, f := range p.modulesSl {
 		if cod := f.OnInit(); cod != ret.Code_Ok {
-			helper1.MustOk(cod, "onInitSl.failed", fmt.Sprintf("idx:%v", idx))
+			helper1.MustOk(cod, "OnInit.failed", fmt.Sprintf("idx:%v", idx))
 		}
 	}
 	for idx, f := range p.modulesSl {
 		if cod := f.OnStarted(); cod != ret.Code_Ok {
-			helper1.MustOk(cod, "onStartedSl.failed", fmt.Sprintf("idx:%v", idx))
+			helper1.MustOk(cod, "OnStarted.failed", fmt.Sprintf("idx:%v", idx))
 		}
 	}
 	//
@@ -49,7 +50,7 @@ func (p *Player) PreStop() {
 	}
 	for idx, f := range p.modulesSl {
 		if cod := f.OnPreStop(); cod != ret.Code_Ok {
-			helper1.MustOk(cod, "onPreStopSl.failed", fmt.Sprintf("idx:%v", idx))
+			helper1.MustOk(cod, "OnPreStop.failed", fmt.Sprintf("idx:%v", idx))
 		}
 	}
 }

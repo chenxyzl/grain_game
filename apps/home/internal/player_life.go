@@ -6,17 +6,6 @@ import (
 	"time"
 )
 
-type iPlayerModuleLife interface {
-	OnInit() ret.Code
-	OnStarted() ret.Code
-	OnPreStop() ret.Code
-	OnTickFun(nowUnix int64)
-	OnCrossDay(natural bool, daysUnix ...int64)
-	OnCrossWeek(natural bool, daysUnix ...int64)
-	OnlineFun(nowUnix int64)
-	OfflineFun(nowUnix int64)
-}
-
 func (p *Player) onTick() {
 	defer helper.Recover(func(e any, trace string) {
 		if err, ok := e.(*ret.Error); ok {

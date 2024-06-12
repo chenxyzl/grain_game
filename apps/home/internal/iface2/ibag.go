@@ -2,12 +2,11 @@ package iface2
 
 import (
 	"grain_game/apps/home/internal/model"
-	"grain_game/apps/shared1/iface1"
 	"grain_game/proto/gen/ret"
 )
 
 type IBag interface {
-	iface1.IModule
+	IPlayerModule
 	//Add 添加物品
 	Add(items ...*model.AItem)
 	//RemoveM 移除物品,不够数量则会panic(ret.Error)
