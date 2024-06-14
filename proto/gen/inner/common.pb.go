@@ -9,6 +9,7 @@ package pbi
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	ret "grain_game/proto/gen/ret"
 	reflect "reflect"
 	sync "sync"
 )
@@ -20,7 +21,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-//per second
+// per second
 type Tick struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -59,7 +60,7 @@ func (*Tick) Descriptor() ([]byte, []int) {
 	return file_inner_common_proto_rawDescGZIP(), []int{0}
 }
 
-//per 30 second
+// per 30 second
 type Tick30 struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -98,7 +99,7 @@ func (*Tick30) Descriptor() ([]byte, []int) {
 	return file_inner_common_proto_rawDescGZIP(), []int{1}
 }
 
-//per 60 second
+// per 60 second
 type Tick60 struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -137,6 +138,126 @@ func (*Tick60) Descriptor() ([]byte, []int) {
 	return file_inner_common_proto_rawDescGZIP(), []int{2}
 }
 
+// mail模板
+type MailTemplate struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid        uint64            `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`                                                                                              //模板邮件唯一id,全局邮件由于自增？
+	Tid        uint64            `protobuf:"varint,2,opt,name=tid,proto3" json:"tid,omitempty"`                                                                                              //模板编号, 决定以下参数如何使用
+	ToUid      uint64            `protobuf:"varint,3,opt,name=toUid,proto3" json:"toUid,omitempty"`                                                                                          //接收方唯一id, 注:1代表全局？
+	FromUid    uint64            `protobuf:"varint,4,opt,name=fromUid,proto3" json:"fromUid,omitempty"`                                                                                      //发送方唯一id, 注:1代表系统？
+	FromName   string            `protobuf:"bytes,5,opt,name=fromName,proto3" json:"fromName,omitempty"`                                                                                     //发送方名字
+	Title      string            `protobuf:"bytes,6,opt,name=title,proto3" json:"title,omitempty"`                                                                                           //标题
+	Content    string            `protobuf:"bytes,7,opt,name=content,proto3" json:"content,omitempty"`                                                                                       //内容
+	Rewards    []*ret.TItem      `protobuf:"bytes,8,rep,name=rewards,proto3" json:"rewards,omitempty"`                                                                                       //奖励
+	Params     map[string]string `protobuf:"bytes,9,rep,name=params,proto3" json:"params,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"` //参数
+	CreateTime int64             `protobuf:"varint,10,opt,name=createTime,proto3" json:"createTime,omitempty"`                                                                               //创建时间, 注:如有表示接收方收到时间,无则表示接收方收到时间为发生那一刻
+}
+
+func (x *MailTemplate) Reset() {
+	*x = MailTemplate{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_inner_common_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *MailTemplate) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MailTemplate) ProtoMessage() {}
+
+func (x *MailTemplate) ProtoReflect() protoreflect.Message {
+	mi := &file_inner_common_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MailTemplate.ProtoReflect.Descriptor instead.
+func (*MailTemplate) Descriptor() ([]byte, []int) {
+	return file_inner_common_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *MailTemplate) GetUid() uint64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *MailTemplate) GetTid() uint64 {
+	if x != nil {
+		return x.Tid
+	}
+	return 0
+}
+
+func (x *MailTemplate) GetToUid() uint64 {
+	if x != nil {
+		return x.ToUid
+	}
+	return 0
+}
+
+func (x *MailTemplate) GetFromUid() uint64 {
+	if x != nil {
+		return x.FromUid
+	}
+	return 0
+}
+
+func (x *MailTemplate) GetFromName() string {
+	if x != nil {
+		return x.FromName
+	}
+	return ""
+}
+
+func (x *MailTemplate) GetTitle() string {
+	if x != nil {
+		return x.Title
+	}
+	return ""
+}
+
+func (x *MailTemplate) GetContent() string {
+	if x != nil {
+		return x.Content
+	}
+	return ""
+}
+
+func (x *MailTemplate) GetRewards() []*ret.TItem {
+	if x != nil {
+		return x.Rewards
+	}
+	return nil
+}
+
+func (x *MailTemplate) GetParams() map[string]string {
+	if x != nil {
+		return x.Params
+	}
+	return nil
+}
+
+func (x *MailTemplate) GetCreateTime() int64 {
+	if x != nil {
+		return x.CreateTime
+	}
+	return 0
+}
+
 type Tick_Notify struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -146,7 +267,7 @@ type Tick_Notify struct {
 func (x *Tick_Notify) Reset() {
 	*x = Tick_Notify{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_common_proto_msgTypes[3]
+		mi := &file_inner_common_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -159,7 +280,7 @@ func (x *Tick_Notify) String() string {
 func (*Tick_Notify) ProtoMessage() {}
 
 func (x *Tick_Notify) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_common_proto_msgTypes[3]
+	mi := &file_inner_common_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -184,7 +305,7 @@ type Tick30_Notify struct {
 func (x *Tick30_Notify) Reset() {
 	*x = Tick30_Notify{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_common_proto_msgTypes[4]
+		mi := &file_inner_common_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -197,7 +318,7 @@ func (x *Tick30_Notify) String() string {
 func (*Tick30_Notify) ProtoMessage() {}
 
 func (x *Tick30_Notify) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_common_proto_msgTypes[4]
+	mi := &file_inner_common_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -222,7 +343,7 @@ type Tick60_Notify struct {
 func (x *Tick60_Notify) Reset() {
 	*x = Tick60_Notify{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_common_proto_msgTypes[5]
+		mi := &file_inner_common_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -235,7 +356,7 @@ func (x *Tick60_Notify) String() string {
 func (*Tick60_Notify) ProtoMessage() {}
 
 func (x *Tick60_Notify) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_common_proto_msgTypes[5]
+	mi := &file_inner_common_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -255,13 +376,37 @@ var File_inner_common_proto protoreflect.FileDescriptor
 
 var file_inner_common_proto_rawDesc = []byte{
 	0x0a, 0x12, 0x69, 0x6e, 0x6e, 0x65, 0x72, 0x2f, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x12, 0x03, 0x70, 0x62, 0x69, 0x22, 0x10, 0x0a, 0x04, 0x54, 0x69, 0x63,
-	0x6b, 0x1a, 0x08, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x22, 0x12, 0x0a, 0x06, 0x54,
-	0x69, 0x63, 0x6b, 0x33, 0x30, 0x1a, 0x08, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x22,
-	0x12, 0x0a, 0x06, 0x54, 0x69, 0x63, 0x6b, 0x36, 0x30, 0x1a, 0x08, 0x0a, 0x06, 0x4e, 0x6f, 0x74,
-	0x69, 0x66, 0x79, 0x42, 0x1a, 0x5a, 0x18, 0x67, 0x72, 0x61, 0x69, 0x6e, 0x5f, 0x67, 0x61, 0x6d,
-	0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x70, 0x62, 0x69, 0x62,
-	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x72, 0x6f, 0x74, 0x6f, 0x12, 0x03, 0x70, 0x62, 0x69, 0x1a, 0x10, 0x72, 0x65, 0x74, 0x2f, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x10, 0x0a, 0x04, 0x54,
+	0x69, 0x63, 0x6b, 0x1a, 0x08, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x22, 0x12, 0x0a,
+	0x06, 0x54, 0x69, 0x63, 0x6b, 0x33, 0x30, 0x1a, 0x08, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66,
+	0x79, 0x22, 0x12, 0x0a, 0x06, 0x54, 0x69, 0x63, 0x6b, 0x36, 0x30, 0x1a, 0x08, 0x0a, 0x06, 0x4e,
+	0x6f, 0x74, 0x69, 0x66, 0x79, 0x22, 0xe6, 0x02, 0x0a, 0x0c, 0x4d, 0x61, 0x69, 0x6c, 0x54, 0x65,
+	0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x04, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x74, 0x69, 0x64, 0x18,
+	0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x03, 0x74, 0x69, 0x64, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f,
+	0x55, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x04, 0x52, 0x05, 0x74, 0x6f, 0x55, 0x69, 0x64,
+	0x12, 0x18, 0x0a, 0x07, 0x66, 0x72, 0x6f, 0x6d, 0x55, 0x69, 0x64, 0x18, 0x04, 0x20, 0x01, 0x28,
+	0x04, 0x52, 0x07, 0x66, 0x72, 0x6f, 0x6d, 0x55, 0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x66, 0x72,
+	0x6f, 0x6d, 0x4e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x66, 0x72,
+	0x6f, 0x6d, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18,
+	0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x18, 0x0a, 0x07,
+	0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x63,
+	0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x12, 0x24, 0x0a, 0x07, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64,
+	0x73, 0x18, 0x08, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0a, 0x2e, 0x72, 0x65, 0x74, 0x2e, 0x54, 0x49,
+	0x74, 0x65, 0x6d, 0x52, 0x07, 0x72, 0x65, 0x77, 0x61, 0x72, 0x64, 0x73, 0x12, 0x35, 0x0a, 0x06,
+	0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x09, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1d, 0x2e, 0x70,
+	0x62, 0x69, 0x2e, 0x4d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x2e,
+	0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x06, 0x70, 0x61, 0x72,
+	0x61, 0x6d, 0x73, 0x12, 0x1e, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d,
+	0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54,
+	0x69, 0x6d, 0x65, 0x1a, 0x39, 0x0a, 0x0b, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x45, 0x6e, 0x74,
+	0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x03, 0x6b, 0x65, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x42, 0x1a,
+	0x5a, 0x18, 0x67, 0x72, 0x61, 0x69, 0x6e, 0x5f, 0x67, 0x61, 0x6d, 0x65, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x70, 0x62, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -276,21 +421,26 @@ func file_inner_common_proto_rawDescGZIP() []byte {
 	return file_inner_common_proto_rawDescData
 }
 
-var file_inner_common_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_inner_common_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_inner_common_proto_goTypes = []interface{}{
 	(*Tick)(nil),          // 0: pbi.Tick
 	(*Tick30)(nil),        // 1: pbi.Tick30
 	(*Tick60)(nil),        // 2: pbi.Tick60
-	(*Tick_Notify)(nil),   // 3: pbi.Tick.Notify
-	(*Tick30_Notify)(nil), // 4: pbi.Tick30.Notify
-	(*Tick60_Notify)(nil), // 5: pbi.Tick60.Notify
+	(*MailTemplate)(nil),  // 3: pbi.MailTemplate
+	(*Tick_Notify)(nil),   // 4: pbi.Tick.Notify
+	(*Tick30_Notify)(nil), // 5: pbi.Tick30.Notify
+	(*Tick60_Notify)(nil), // 6: pbi.Tick60.Notify
+	nil,                   // 7: pbi.MailTemplate.ParamsEntry
+	(*ret.TItem)(nil),     // 8: ret.TItem
 }
 var file_inner_common_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	8, // 0: pbi.MailTemplate.rewards:type_name -> ret.TItem
+	7, // 1: pbi.MailTemplate.params:type_name -> pbi.MailTemplate.ParamsEntry
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_inner_common_proto_init() }
@@ -336,7 +486,7 @@ func file_inner_common_proto_init() {
 			}
 		}
 		file_inner_common_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Tick_Notify); i {
+			switch v := v.(*MailTemplate); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -348,7 +498,7 @@ func file_inner_common_proto_init() {
 			}
 		}
 		file_inner_common_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Tick30_Notify); i {
+			switch v := v.(*Tick_Notify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -360,6 +510,18 @@ func file_inner_common_proto_init() {
 			}
 		}
 		file_inner_common_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Tick30_Notify); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_inner_common_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Tick60_Notify); i {
 			case 0:
 				return &v.state
@@ -378,7 +540,7 @@ func file_inner_common_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_inner_common_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

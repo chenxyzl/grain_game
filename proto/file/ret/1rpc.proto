@@ -9,9 +9,10 @@ message Rpc {
     //消息-对应的id【根据名字自动映射】
     enum Id {
         Null = 0;
-        Heartbeat = 10000;
-        GetUserInfo = 10001;
-        GetMails = 10002;
+        Heartbeat = 10000; //心跳
+        GetUserInfo = 10001; //获取用户信息
+        GetMails = 10002; //获取邮件列表
+        NewMail = 10003; //通知新邮件
     }
 }
 

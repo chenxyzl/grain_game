@@ -1,0 +1,18 @@
+//游戏业务相关-http请求
+syntax = "proto3";
+package ret;
+option  go_package = "grain_game/proto/gen/ret";
+
+//获取服务器列表
+message GetServerList {
+    message Request {
+        int32 op = 1; //渠道id
+    }
+    message Reply {
+        repeated Server serverList = 1; //服务器列表
+    }
+    message Server {
+        int32 sid = 1; //服务器id -- 如果是分服的情况下需要
+        string serverName = 2; //服务器名字
+    }
+}

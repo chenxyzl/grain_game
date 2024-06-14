@@ -2,9 +2,25 @@ syntax = "proto3";
 package pbi;
 option  go_package = "grain_game/proto/gen/pbi";
 
+import "ret/common.proto";
+
 //per second
 message Tick{message Notify{}}
 //per 30 second
 message Tick30{message Notify{}}
 //per 60 second
 message Tick60{message Notify{}}
+
+//mail模板
+message MailTemplate {
+    uint64 uid = 1; //模板邮件唯一id,全局邮件由于自增？
+    uint64 tid = 2; //模板编号, 决定以下参数如何使用
+    uint64 toUid = 3; //接收方唯一id, 注:1代表全局？
+    uint64 fromUid = 4; //发送方唯一id, 注:1代表系统？
+    string fromName = 5; //发送方名字
+    string title = 6; //标题
+    string content = 7; //内容
+    repeated ret.TItem rewards = 8; //奖励
+    map<string, string> params = 9; //参数
+    int64 createTime = 10; //创建时间, 注:如有表示接收方收到时间,无则表示接收方收到时间为发生那一刻
+}

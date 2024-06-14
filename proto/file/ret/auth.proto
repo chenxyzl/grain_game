@@ -1,0 +1,15 @@
+//登录-非游戏服务器相关
+syntax = "proto3";
+package ret;
+option  go_package = "grain_game/proto/gen/ret";
+
+//登录请求-返回token
+message Login {
+    message Request {
+        string acc = 1; //账户名或第三方的token
+    }
+    message Reply {
+        string  token = 1; //游戏内的token
+        string gateUrl = 2; //gate链接地址
+    }
+}

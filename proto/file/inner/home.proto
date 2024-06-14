@@ -17,3 +17,13 @@ message Offline {
 message Kick{
     message Notify {}
 }
+
+//发送个人邮件
+message SendMail {
+
+}
+
+//发送全局邮件
+message SendGlobalMail {
+
+}

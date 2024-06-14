@@ -1,0 +1,12 @@
+syntax = "proto3";
+package pbi;
+option  go_package = "grain_game/proto/gen/pbi";
+import "inner/common.proto";
+
+//发送邮件 - toUid==1表示全局邮件
+message GmSendMail {
+    MailTemplate mail = 1;
+}
+//todo 全局邮件放redis?etcd?
+//todo 全局邮件是否需要一个节点?
+//todo 全局邮件player激活时候自己检查？定时检查？还是登录检查+通知
