@@ -56,6 +56,7 @@ else
 endif
 
 proto: version
+	find . -type d -exec sh -c 'cd "{}" && rm -f *.pb.go' \; #查找当前目录和子目录,并删除所有*.pb.go
 	protoc -I=./proto/file --go-new_out=paths=source_relative:./proto/gen ./proto/file/inner/*.proto
 	protoc -I=./proto/file --go-new_out=paths=source_relative:./proto/gen ./proto/file/ret/*.proto
 
