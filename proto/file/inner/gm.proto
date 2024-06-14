@@ -7,6 +7,8 @@ import "inner/common.proto";
 message GmSendMail {
     MailTemplate mail = 1;
 }
-//todo 全局邮件放redis?etcd?
-//todo 全局邮件是否需要一个节点?
-//todo 全局邮件player激活时候自己检查？定时检查？还是登录检查+通知
+//全局邮件设计
+//1.全局邮件挂在etcd/redis上
+//2.home节点监听或者每分钟查询
+//3.home发现有新邮件则本地广播给player
+//4.本地player收到广播后,各自处理全局邮件
