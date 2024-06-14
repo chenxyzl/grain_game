@@ -1,8 +1,8 @@
-package iface1
+package iface
 
 import (
 	"github.com/chenxyzl/grain/actor"
-	"grain_game/apps/shared1/helper1"
+	"grain_game/apps/shared/utils"
 	"reflect"
 )
 
@@ -59,5 +59,5 @@ func Get[T IModule](entity IEntity) T {
 func GetMust[T IModule](entity IEntity) T {
 	com := Get[T](entity)
 	var t IModule = com
-	return helper1.NotNull(t, "module not found").(T)
+	return utils.NotNull(t, "module not found").(T)
 }

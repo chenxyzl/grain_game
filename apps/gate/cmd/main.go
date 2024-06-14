@@ -2,13 +2,12 @@ package main
 
 import (
 	"github.com/chenxyzl/grain/actor"
-	"github.com/chenxyzl/grain/utils/helper"
-	"grain_game/apps/common1"
+	"grain_game/apps/common"
 	"grain_game/apps/gate/internal"
 )
 
 func main() {
-	helper.InitLog("./home.log")
+	actor.InitLog("./home.log")
 	//config
 	config := actor.NewConfig("hello_cluster", "0.0.1", []string{"127.0.0.1:2379"})
 	//system
@@ -18,7 +17,7 @@ func main() {
 	system.Start()
 	system.Logger().Warn("system started successfully")
 	//
-	ws := system.Spawn(func() actor.IActor { return internal.NewWebsocketServer("/ws", "127.0.0.1", "32100") }, actor.WithOptsKindName(common1.WsServerKind))
+	ws := system.Spawn(func() actor.IActor { return internal.NewWebsocketServer("/ws", "127.0.0.1", "32100") }, actor.WithOptsKindName(common.WsServerKind))
 	if ws == nil {
 		system.Logger().Error("failed to spawn websocket server")
 		panic("failed to spawn websocket server")

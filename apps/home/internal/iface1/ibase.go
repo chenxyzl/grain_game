@@ -1,4 +1,4 @@
-package iface2
+package iface1
 
 type IBase interface {
 	IPlayerModule

@@ -3,7 +3,7 @@ module grain_game
 go 1.22
 
 require (
-	github.com/chenxyzl/grain v1.0.3
+	github.com/chenxyzl/grain v1.0.4
 	github.com/gobwas/ws v1.4.0
 	github.com/golang/protobuf v1.5.4
 	go.mongodb.org/mongo-driver v1.15.0

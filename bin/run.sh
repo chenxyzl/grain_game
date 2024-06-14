@@ -9,6 +9,7 @@ declare -a allServers=("home" "gate")
 if [ "$#" -eq 2 ]; then
   declare -a startServers=("$2")
 else
+  # shellcheck disable=SC2206
   declare -a startServers=(${allServers[@]})
 fi
 
@@ -73,6 +74,7 @@ function Clean() {
   rm -rf "$basedir"/**_linux
   for PRD in "${allServers[@]}"; do
     echo "Clean $PRD Begin"
+    # shellcheck disable=SC2115
     rm -rf "$basedir"/$PRD
     echo "Clean $PRD Success"
   done
@@ -82,6 +84,7 @@ function Clean() {
 
 function CleanLog() {
   echo "Starting CleanLog..."
+  # shellcheck disable=SC2164
   cd "$basedir"
   for PRD in "${allServers[@]}"; do
     echo "CleanLog $PRD Begin"

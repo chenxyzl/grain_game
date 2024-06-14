@@ -1,14 +1,14 @@
 package mail
 
 import (
-	"grain_game/apps/home/internal/iface2"
+	"grain_game/apps/home/internal/iface1"
 	"grain_game/proto/gen/ret"
 )
 
-var _ iface2.IMails = (*Mails)(nil)
+var _ iface1.IMails = (*Mails)(nil)
 
 type Mails struct {
-	iface2.BasePlayerModule
+	iface1.BasePlayerModule
 }
 
 func (m Mails) SendMail() {

@@ -2,10 +2,10 @@ package internal
 
 import (
 	"github.com/chenxyzl/grain/actor"
-	"github.com/chenxyzl/grain/utils/helper"
-	"grain_game/apps/common1"
-	"grain_game/apps/home/internal/iface2"
-	"grain_game/apps/shared1/iface1"
+	"grain_game/apps/common"
+	"grain_game/apps/home/internal/iface1"
+	"grain_game/apps/shared/iface"
+	"grain_game/apps/shared/utils"
 	pbi "grain_game/proto/gen/inner"
 	"grain_game/proto/gen/ret"
 	"time"
@@ -14,14 +14,14 @@ import (
 var _ actor.IActor = (*Player)(nil)
 
 type Player struct {
-	*iface1.BaseEntity
-	modules    map[string]iface2.IPlayerModule
-	modulesSl  []iface2.IPlayerModule //for range
+	*iface.BaseEntity
+	modules    map[string]iface1.IPlayerModule
+	modulesSl  []iface1.IPlayerModule //for range
 	cancelTick actor.CancelScheduleFunc
 }
 
 func NewPlayer() *Player {
-	return &Player{BaseEntity: iface1.NewBaseEntity(), modules: make(map[string]iface2.IPlayerModule)}
+	return &Player{BaseEntity: iface.NewBaseEntity(), modules: make(map[string]iface1.IPlayerModule)}
 }
 
 func (p *Player) Started() {
@@ -48,7 +48,7 @@ func (p *Player) PreStop() {
 }
 
 func (p *Player) Receive(ctx actor.Context) {
-	defer helper.Recover(func(e any, trace string) {
+	defer utils.Recover(func(e any, trace string) {
 		if err, ok := e.(*ret.Error); ok {
 			//todo send err code to client
 			p.Logger().Warn("receive catch err code", "code", err.Code, "des", err.Des)
@@ -60,7 +60,7 @@ func (p *Player) Receive(ctx actor.Context) {
 	case *pbi.Tick:
 		p.onTick()
 	default:
-		if ctx.Sender().GetKind() == common1.SessionKind {
+		if ctx.Sender().GetKind() == common.SessionKind {
 			//todo 外部rpc分发
 		} else {
 			//todo 内部rpc分发

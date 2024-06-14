@@ -4,13 +4,13 @@ import (
 	"errors"
 	"fmt"
 	"github.com/chenxyzl/grain/actor"
-	"github.com/chenxyzl/grain/utils/al/safemap"
-	"github.com/chenxyzl/grain/utils/helper"
+	"github.com/chenxyzl/grain/al/safemap"
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"
 	"github.com/golang/protobuf/proto"
-	"grain_game/apps/common1"
-	"grain_game/apps/gate/internal/constant2"
+	"grain_game/apps/common"
+	"grain_game/apps/gate/internal/constant1"
+	"grain_game/apps/shared/utils"
 	"grain_game/proto/gen/ret"
 	"io"
 	"net"
@@ -67,7 +67,7 @@ func (wss *WebsocketServer) Receive(ctx actor.Context) {
 
 func (wss *WebsocketServer) helpersHighLevelHandler(w http.ResponseWriter, r *http.Request) {
 	//recover
-	defer helper.Recover(func(e any, trace string) { wss.Logger().Error("sess closed with error", "err", e, "trace", trace) })
+	defer utils.Recover(func(e any, trace string) { wss.Logger().Error("sess closed with error", "err", e, "trace", trace) })
 	//update to websocket connection
 	conn, _, _, err := ws.UpgradeHTTP(r, w)
 	if err != nil {
@@ -89,7 +89,7 @@ func (wss *WebsocketServer) helpersHighLevelHandler(w http.ResponseWriter, r *ht
 		return
 	}
 	//get token
-	token := m.Get(constant2.ParamToken)
+	token := m.Get(constant1.ParamToken)
 	if token == "" {
 		wss.Logger().Error("session get token is nil", "uri", uri, "rq", rq.RawQuery, "m", m)
 		return
@@ -100,7 +100,7 @@ func (wss *WebsocketServer) helpersHighLevelHandler(w http.ResponseWriter, r *ht
 }
 
 func (wss *WebsocketServer) createSession(conn net.Conn) {
-	sess := wss.System().Spawn(func() actor.IActor { return newSession(wss.Self(), conn) }, actor.WithOptsKindName(common1.SessionKind))
+	sess := wss.System().Spawn(func() actor.IActor { return newSession(wss.Self(), conn) }, actor.WithOptsKindName(common.SessionKind))
 	wss.sessions.Set(sess.GetId(), sess)
 	defer func() { wss.sessions.Delete(sess.GetId()); wss.System().Poison(sess) }()
 	wss.Logger().Info("session created", "id", sess.GetId())

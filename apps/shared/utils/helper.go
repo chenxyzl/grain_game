@@ -1,4 +1,4 @@
-package helper1
+package utils
 
 import (
 	"grain_game/proto/gen/ret"

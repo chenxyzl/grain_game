@@ -17,5 +17,6 @@ type Mail struct {
 }
 
 type Mails struct {
-	mailIds []uint64 `bson:"mail_ids"` //右键id-客户端更具邮件id来再次请求邮件内容-避免登录时候db压力集中,分散登录返回包体的大小
+	mailIds            []uint64 `bson:"mail_ids"`              //右键id-客户端更具邮件id来再次请求邮件内容-避免登录时候db压力集中,分散登录返回包体的大小
+	lastGlobalMailTime uint64   `bson:"last_global_mail_time"` //上一次的全局邮件自增id
 }

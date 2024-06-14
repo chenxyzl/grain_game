@@ -1,4 +1,4 @@
-package helper1
+package utils
 
 import (
 	"fmt"
@@ -19,7 +19,7 @@ func TestNotNull(t *testing.T) {
 	var res *err
 	fmt.Println(res == nil)
 
-	var v1 *testCase
+	var v1 *testCase = &testCase{}
 	//NotNull(0) --compile error
 	NotNull(v1)
 }

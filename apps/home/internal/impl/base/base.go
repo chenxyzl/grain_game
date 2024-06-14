@@ -1,11 +1,11 @@
 package base
 
-import "grain_game/apps/home/internal/iface2"
+import "grain_game/apps/home/internal/iface1"
 
-var _ iface2.IBase = (*Base)(nil)
+var _ iface1.IBase = (*Base)(nil)
 
 type Base struct {
-	iface2.BasePlayerModule
+	iface1.BasePlayerModule
 }
 
 func (m *Base) SetName(name string) {

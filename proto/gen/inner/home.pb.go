@@ -20,7 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// online
+// online--gateway通知player在线
 type Online struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -59,7 +59,7 @@ func (*Online) Descriptor() ([]byte, []int) {
 	return file_inner_home_proto_rawDescGZIP(), []int{0}
 }
 
-// offline
+// offline--gateway通知player离线
 type Offline struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -98,15 +98,15 @@ func (*Offline) Descriptor() ([]byte, []int) {
 	return file_inner_home_proto_rawDescGZIP(), []int{1}
 }
 
-// Kick
-type Kick struct {
+// home监听player激活
+type PlayerActiveWatch struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *Kick) Reset() {
-	*x = Kick{}
+func (x *PlayerActiveWatch) Reset() {
+	*x = PlayerActiveWatch{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_inner_home_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -114,13 +114,13 @@ func (x *Kick) Reset() {
 	}
 }
 
-func (x *Kick) String() string {
+func (x *PlayerActiveWatch) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Kick) ProtoMessage() {}
+func (*PlayerActiveWatch) ProtoMessage() {}
 
-func (x *Kick) ProtoReflect() protoreflect.Message {
+func (x *PlayerActiveWatch) ProtoReflect() protoreflect.Message {
 	mi := &file_inner_home_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -132,8 +132,8 @@ func (x *Kick) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Kick.ProtoReflect.Descriptor instead.
-func (*Kick) Descriptor() ([]byte, []int) {
+// Deprecated: Use PlayerActiveWatch.ProtoReflect.Descriptor instead.
+func (*PlayerActiveWatch) Descriptor() ([]byte, []int) {
 	return file_inner_home_proto_rawDescGZIP(), []int{2}
 }
 
@@ -176,15 +176,15 @@ func (*SendMail) Descriptor() ([]byte, []int) {
 	return file_inner_home_proto_rawDescGZIP(), []int{3}
 }
 
-// 发送全局邮件
-type SendGlobalMail struct {
+// 全局邮件监听
+type GlobalMailWatch struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 }
 
-func (x *SendGlobalMail) Reset() {
-	*x = SendGlobalMail{}
+func (x *GlobalMailWatch) Reset() {
+	*x = GlobalMailWatch{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_inner_home_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -192,13 +192,13 @@ func (x *SendGlobalMail) Reset() {
 	}
 }
 
-func (x *SendGlobalMail) String() string {
+func (x *GlobalMailWatch) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*SendGlobalMail) ProtoMessage() {}
+func (*GlobalMailWatch) ProtoMessage() {}
 
-func (x *SendGlobalMail) ProtoReflect() protoreflect.Message {
+func (x *GlobalMailWatch) ProtoReflect() protoreflect.Message {
 	mi := &file_inner_home_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -210,8 +210,8 @@ func (x *SendGlobalMail) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use SendGlobalMail.ProtoReflect.Descriptor instead.
-func (*SendGlobalMail) Descriptor() ([]byte, []int) {
+// Deprecated: Use GlobalMailWatch.ProtoReflect.Descriptor instead.
+func (*GlobalMailWatch) Descriptor() ([]byte, []int) {
 	return file_inner_home_proto_rawDescGZIP(), []int{4}
 }
 
@@ -329,14 +329,17 @@ func (*Offline_Notify) Descriptor() ([]byte, []int) {
 	return file_inner_home_proto_rawDescGZIP(), []int{1, 0}
 }
 
-type Kick_Notify struct {
+type PlayerActiveWatch_Notify struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
+
+	Uid              uint64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	LastGlobalMailId uint64 `protobuf:"varint,2,opt,name=lastGlobalMailId,proto3" json:"lastGlobalMailId,omitempty"`
 }
 
-func (x *Kick_Notify) Reset() {
-	*x = Kick_Notify{}
+func (x *PlayerActiveWatch_Notify) Reset() {
+	*x = PlayerActiveWatch_Notify{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_inner_home_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -344,13 +347,13 @@ func (x *Kick_Notify) Reset() {
 	}
 }
 
-func (x *Kick_Notify) String() string {
+func (x *PlayerActiveWatch_Notify) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Kick_Notify) ProtoMessage() {}
+func (*PlayerActiveWatch_Notify) ProtoMessage() {}
 
-func (x *Kick_Notify) ProtoReflect() protoreflect.Message {
+func (x *PlayerActiveWatch_Notify) ProtoReflect() protoreflect.Message {
 	mi := &file_inner_home_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -362,22 +365,181 @@ func (x *Kick_Notify) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Kick_Notify.ProtoReflect.Descriptor instead.
-func (*Kick_Notify) Descriptor() ([]byte, []int) {
+// Deprecated: Use PlayerActiveWatch_Notify.ProtoReflect.Descriptor instead.
+func (*PlayerActiveWatch_Notify) Descriptor() ([]byte, []int) {
 	return file_inner_home_proto_rawDescGZIP(), []int{2, 0}
+}
+
+func (x *PlayerActiveWatch_Notify) GetUid() uint64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *PlayerActiveWatch_Notify) GetLastGlobalMailId() uint64 {
+	if x != nil {
+		return x.LastGlobalMailId
+	}
+	return 0
+}
+
+type SendMail_Request struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Mails []*MailTemplate `protobuf:"bytes,1,rep,name=mails,proto3" json:"mails,omitempty"`
+}
+
+func (x *SendMail_Request) Reset() {
+	*x = SendMail_Request{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_inner_home_proto_msgTypes[9]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SendMail_Request) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SendMail_Request) ProtoMessage() {}
+
+func (x *SendMail_Request) ProtoReflect() protoreflect.Message {
+	mi := &file_inner_home_proto_msgTypes[9]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SendMail_Request.ProtoReflect.Descriptor instead.
+func (*SendMail_Request) Descriptor() ([]byte, []int) {
+	return file_inner_home_proto_rawDescGZIP(), []int{3, 0}
+}
+
+func (x *SendMail_Request) GetMails() []*MailTemplate {
+	if x != nil {
+		return x.Mails
+	}
+	return nil
+}
+
+type SendMail_Reply struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *SendMail_Reply) Reset() {
+	*x = SendMail_Reply{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_inner_home_proto_msgTypes[10]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *SendMail_Reply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*SendMail_Reply) ProtoMessage() {}
+
+func (x *SendMail_Reply) ProtoReflect() protoreflect.Message {
+	mi := &file_inner_home_proto_msgTypes[10]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use SendMail_Reply.ProtoReflect.Descriptor instead.
+func (*SendMail_Reply) Descriptor() ([]byte, []int) {
+	return file_inner_home_proto_rawDescGZIP(), []int{3, 1}
+}
+
+type GlobalMailWatch_Notify struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Mails []*MailTemplate `protobuf:"bytes,1,rep,name=mails,proto3" json:"mails,omitempty"`
+}
+
+func (x *GlobalMailWatch_Notify) Reset() {
+	*x = GlobalMailWatch_Notify{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_inner_home_proto_msgTypes[11]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *GlobalMailWatch_Notify) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GlobalMailWatch_Notify) ProtoMessage() {}
+
+func (x *GlobalMailWatch_Notify) ProtoReflect() protoreflect.Message {
+	mi := &file_inner_home_proto_msgTypes[11]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GlobalMailWatch_Notify.ProtoReflect.Descriptor instead.
+func (*GlobalMailWatch_Notify) Descriptor() ([]byte, []int) {
+	return file_inner_home_proto_rawDescGZIP(), []int{4, 0}
+}
+
+func (x *GlobalMailWatch_Notify) GetMails() []*MailTemplate {
+	if x != nil {
+		return x.Mails
+	}
+	return nil
 }
 
 var File_inner_home_proto protoreflect.FileDescriptor
 
 var file_inner_home_proto_rawDesc = []byte{
 	0x0a, 0x10, 0x69, 0x6e, 0x6e, 0x65, 0x72, 0x2f, 0x68, 0x6f, 0x6d, 0x65, 0x2e, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x12, 0x03, 0x70, 0x62, 0x69, 0x22, 0x1c, 0x0a, 0x06, 0x4f, 0x6e, 0x6c, 0x69, 0x6e,
-	0x65, 0x1a, 0x09, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x07, 0x0a, 0x05,
-	0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x13, 0x0a, 0x07, 0x4f, 0x66, 0x66, 0x6c, 0x69, 0x6e, 0x65,
-	0x1a, 0x08, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x22, 0x10, 0x0a, 0x04, 0x4b, 0x69,
-	0x63, 0x6b, 0x1a, 0x08, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x22, 0x0a, 0x0a, 0x08,
-	0x53, 0x65, 0x6e, 0x64, 0x4d, 0x61, 0x69, 0x6c, 0x22, 0x10, 0x0a, 0x0e, 0x53, 0x65, 0x6e, 0x64,
-	0x47, 0x6c, 0x6f, 0x62, 0x61, 0x6c, 0x4d, 0x61, 0x69, 0x6c, 0x42, 0x1a, 0x5a, 0x18, 0x67, 0x72,
+	0x74, 0x6f, 0x12, 0x03, 0x70, 0x62, 0x69, 0x1a, 0x12, 0x69, 0x6e, 0x6e, 0x65, 0x72, 0x2f, 0x63,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x1c, 0x0a, 0x06, 0x4f,
+	0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x1a, 0x09, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x1a, 0x07, 0x0a, 0x05, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x13, 0x0a, 0x07, 0x4f, 0x66, 0x66,
+	0x6c, 0x69, 0x6e, 0x65, 0x1a, 0x08, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x22, 0x5b,
+	0x0a, 0x11, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x57, 0x61,
+	0x74, 0x63, 0x68, 0x1a, 0x46, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x12, 0x10, 0x0a,
+	0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12,
+	0x2a, 0x0a, 0x10, 0x6c, 0x61, 0x73, 0x74, 0x47, 0x6c, 0x6f, 0x62, 0x61, 0x6c, 0x4d, 0x61, 0x69,
+	0x6c, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x10, 0x6c, 0x61, 0x73, 0x74, 0x47,
+	0x6c, 0x6f, 0x62, 0x61, 0x6c, 0x4d, 0x61, 0x69, 0x6c, 0x49, 0x64, 0x22, 0x47, 0x0a, 0x08, 0x53,
+	0x65, 0x6e, 0x64, 0x4d, 0x61, 0x69, 0x6c, 0x1a, 0x32, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x27, 0x0a, 0x05, 0x6d, 0x61, 0x69, 0x6c, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28,
+	0x0b, 0x32, 0x11, 0x2e, 0x70, 0x62, 0x69, 0x2e, 0x4d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70,
+	0x6c, 0x61, 0x74, 0x65, 0x52, 0x05, 0x6d, 0x61, 0x69, 0x6c, 0x73, 0x1a, 0x07, 0x0a, 0x05, 0x52,
+	0x65, 0x70, 0x6c, 0x79, 0x22, 0x44, 0x0a, 0x0f, 0x47, 0x6c, 0x6f, 0x62, 0x61, 0x6c, 0x4d, 0x61,
+	0x69, 0x6c, 0x57, 0x61, 0x74, 0x63, 0x68, 0x1a, 0x31, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66,
+	0x79, 0x12, 0x27, 0x0a, 0x05, 0x6d, 0x61, 0x69, 0x6c, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b,
+	0x32, 0x11, 0x2e, 0x70, 0x62, 0x69, 0x2e, 0x4d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c,
+	0x61, 0x74, 0x65, 0x52, 0x05, 0x6d, 0x61, 0x69, 0x6c, 0x73, 0x42, 0x1a, 0x5a, 0x18, 0x67, 0x72,
 	0x61, 0x69, 0x6e, 0x5f, 0x67, 0x61, 0x6d, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67,
 	0x65, 0x6e, 0x2f, 0x70, 0x62, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
@@ -394,24 +556,30 @@ func file_inner_home_proto_rawDescGZIP() []byte {
 	return file_inner_home_proto_rawDescData
 }
 
-var file_inner_home_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_inner_home_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
 var file_inner_home_proto_goTypes = []interface{}{
-	(*Online)(nil),         // 0: pbi.Online
-	(*Offline)(nil),        // 1: pbi.Offline
-	(*Kick)(nil),           // 2: pbi.Kick
-	(*SendMail)(nil),       // 3: pbi.SendMail
-	(*SendGlobalMail)(nil), // 4: pbi.SendGlobalMail
-	(*Online_Request)(nil), // 5: pbi.Online.Request
-	(*Online_Reply)(nil),   // 6: pbi.Online.Reply
-	(*Offline_Notify)(nil), // 7: pbi.Offline.Notify
-	(*Kick_Notify)(nil),    // 8: pbi.Kick.Notify
+	(*Online)(nil),                   // 0: pbi.Online
+	(*Offline)(nil),                  // 1: pbi.Offline
+	(*PlayerActiveWatch)(nil),        // 2: pbi.PlayerActiveWatch
+	(*SendMail)(nil),                 // 3: pbi.SendMail
+	(*GlobalMailWatch)(nil),          // 4: pbi.GlobalMailWatch
+	(*Online_Request)(nil),           // 5: pbi.Online.Request
+	(*Online_Reply)(nil),             // 6: pbi.Online.Reply
+	(*Offline_Notify)(nil),           // 7: pbi.Offline.Notify
+	(*PlayerActiveWatch_Notify)(nil), // 8: pbi.PlayerActiveWatch.Notify
+	(*SendMail_Request)(nil),         // 9: pbi.SendMail.Request
+	(*SendMail_Reply)(nil),           // 10: pbi.SendMail.Reply
+	(*GlobalMailWatch_Notify)(nil),   // 11: pbi.GlobalMailWatch.Notify
+	(*MailTemplate)(nil),             // 12: pbi.MailTemplate
 }
 var file_inner_home_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	12, // 0: pbi.SendMail.Request.mails:type_name -> pbi.MailTemplate
+	12, // 1: pbi.GlobalMailWatch.Notify.mails:type_name -> pbi.MailTemplate
+	2,  // [2:2] is the sub-list for method output_type
+	2,  // [2:2] is the sub-list for method input_type
+	2,  // [2:2] is the sub-list for extension type_name
+	2,  // [2:2] is the sub-list for extension extendee
+	0,  // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_inner_home_proto_init() }
@@ -419,6 +587,7 @@ func file_inner_home_proto_init() {
 	if File_inner_home_proto != nil {
 		return
 	}
+	file_inner_common_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_inner_home_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Online); i {
@@ -445,7 +614,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Kick); i {
+			switch v := v.(*PlayerActiveWatch); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -469,7 +638,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SendGlobalMail); i {
+			switch v := v.(*GlobalMailWatch); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -517,7 +686,43 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Kick_Notify); i {
+			switch v := v.(*PlayerActiveWatch_Notify); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_inner_home_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SendMail_Request); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_inner_home_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SendMail_Reply); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_inner_home_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GlobalMailWatch_Notify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -535,7 +740,7 @@ func file_inner_home_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_inner_home_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   12,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

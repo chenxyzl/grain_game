@@ -1,13 +1,13 @@
 package internal
 
 import (
-	"github.com/chenxyzl/grain/utils/helper"
+	"grain_game/apps/shared/utils"
 	"grain_game/proto/gen/ret"
 	"time"
 )
 
 func (p *Player) onTick() {
-	defer helper.Recover(func(e any, trace string) {
+	defer utils.Recover(func(e any, trace string) {
 		if err, ok := e.(*ret.Error); ok {
 			p.Logger().Warn("tick catch err code", "code", err.Code, "des", err.Des)
 		} else {

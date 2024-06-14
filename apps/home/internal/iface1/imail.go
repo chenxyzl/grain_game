@@ -1,4 +1,4 @@
-package iface2
+package iface1
 
 import "grain_game/proto/gen/ret"
 

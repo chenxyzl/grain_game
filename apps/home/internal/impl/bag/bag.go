@@ -1,15 +1,15 @@
 package bag
 
 import (
-	"grain_game/apps/home/internal/iface2"
+	"grain_game/apps/home/internal/iface1"
 	"grain_game/apps/home/internal/model"
 	"grain_game/proto/gen/ret"
 )
 
-var _ iface2.IBag = (*Bag)(nil)
+var _ iface1.IBag = (*Bag)(nil)
 
 type Bag struct {
-	iface2.BasePlayerModule
+	iface1.BasePlayerModule
 }
 
 func (m *Bag) Add(items ...*model.AItem) {}

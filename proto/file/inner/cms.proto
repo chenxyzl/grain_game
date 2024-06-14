@@ -1,14 +1,17 @@
 syntax = "proto3";
 package pbi;
 option  go_package = "grain_game/proto/gen/pbi";
-import "inner/common.proto";
+import "inner/_common.proto";
 
 //发送邮件 - toUid==1表示全局邮件
-message GmSendMail {
-    MailTemplate mail = 1;
-}
 //全局邮件设计
 //1.全局邮件挂在etcd/redis上
 //2.home节点监听或者每分钟查询
 //3.home发现有新邮件则本地广播给player
 //4.本地player收到广播后,各自处理全局邮件
+message GmSendMail {
+    message Request{
+        MailTemplate mail = 1;
+    }
+    message Reply{}
+}

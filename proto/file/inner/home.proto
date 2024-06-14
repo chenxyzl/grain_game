@@ -2,28 +2,38 @@ syntax = "proto3";
 package pbi;
 option  go_package = "grain_game/proto/gen/pbi";
 
-//online
+import "inner/_common.proto";
+
+//online--gateway通知player在线
 message Online {
     message Request {}
     message Reply {}
 }
 
-//offline
+//offline--gateway通知player离线
 message Offline {
     message Notify {}
 }
 
-//Kick
-message Kick{
-    message Notify {}
+//home监听player激活
+message PlayerActiveWatch {
+    message Notify {
+        uint64 uid = 1;
+        uint64 lastGlobalMailId = 2;
+    }
 }
 
 //发送个人邮件
 message SendMail {
-
+    message Request{
+        MailTemplate mail = 1;
+    }
+    message Reply{}
 }
 
-//发送全局邮件
-message SendGlobalMail {
-
+//全局邮件监听
+message GlobalMailWatch {
+    message Notify {
+        MailTemplate mail = 1;
+    }
 }

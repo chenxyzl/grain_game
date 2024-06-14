@@ -1,4 +1,4 @@
-package common1
+package common
 
 const (
 	WsServerKind = "ws_server"

@@ -1,5 +1,6 @@
 github.com/chenxyzl/grain v1.0.3 h1:VOUh1psW9VFcqD0Q4vwmtzf1bakZ9RXFBcBEXg0GRak=
 github.com/chenxyzl/grain v1.0.3/go.mod h1:ClGxcqM1MNGaSNpYMxSQp3al5BTCM/YwR7sEF5UfsBs=
+github.com/chenxyzl/grain v1.0.4/go.mod h1:ClGxcqM1MNGaSNpYMxSQp3al5BTCM/YwR7sEF5UfsBs=
 github.com/coreos/go-semver v0.3.1 h1:yi21YpKnrx1gt5R+la8n5WgS0kCrsPp33dmEyHReZr4=
 github.com/coreos/go-semver v0.3.1/go.mod h1:irMmmIw/7yzSRPWryHsK7EYSg09caPQL03VsM8rvUec=
 github.com/coreos/go-systemd/v22 v22.5.0 h1:RrqgGjYQKalulkV8NGVIfkXQf6YYmOyiJKk8iXXhfZs=

@@ -1,11 +1,11 @@
-package iface2
+package iface1
 
 import (
-	"grain_game/apps/shared1/iface1"
+	"grain_game/apps/shared/iface"
 )
 
 type IPlayerModule interface {
-	iface1.IModule
+	iface.IModule
 	OnInit() //注: init中不要调用其他模块的方法，因为还没初始化完成
 	OnStarted()
 	OnPreStop()
@@ -16,7 +16,7 @@ type IPlayerModule interface {
 	OfflineFun(nowUnix int64)
 }
 
-type BasePlayerModule struct{ iface1.BaseModule }
+type BasePlayerModule struct{ iface.BaseModule }
 
 func (b *BasePlayerModule) OnInit() {}
 
