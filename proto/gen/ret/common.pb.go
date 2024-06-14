@@ -75,6 +75,246 @@ func (x *Error) GetDes() string {
 	return ""
 }
 
+// 模板id和数量
+type TItem struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Tid int32 `protobuf:"varint,1,opt,name=tid,proto3" json:"tid,omitempty"`
+	Num int64 `protobuf:"varint,2,opt,name=num,proto3" json:"num,omitempty"`
+}
+
+func (x *TItem) Reset() {
+	*x = TItem{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ret_common_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TItem) ProtoMessage() {}
+
+func (x *TItem) ProtoReflect() protoreflect.Message {
+	mi := &file_ret_common_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TItem.ProtoReflect.Descriptor instead.
+func (*TItem) Descriptor() ([]byte, []int) {
+	return file_ret_common_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *TItem) GetTid() int32 {
+	if x != nil {
+		return x.Tid
+	}
+	return 0
+}
+
+func (x *TItem) GetNum() int64 {
+	if x != nil {
+		return x.Num
+	}
+	return 0
+}
+
+// 唯一id和数量
+type UItem struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid uint64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Num int64  `protobuf:"varint,2,opt,name=num,proto3" json:"num,omitempty"`
+}
+
+func (x *UItem) Reset() {
+	*x = UItem{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ret_common_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UItem) ProtoMessage() {}
+
+func (x *UItem) ProtoReflect() protoreflect.Message {
+	mi := &file_ret_common_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UItem.ProtoReflect.Descriptor instead.
+func (*UItem) Descriptor() ([]byte, []int) {
+	return file_ret_common_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *UItem) GetUid() uint64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *UItem) GetNum() int64 {
+	if x != nil {
+		return x.Num
+	}
+	return 0
+}
+
+// 背包道具
+type AItem struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid   uint64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	Tid   int32  `protobuf:"varint,2,opt,name=tid,proto3" json:"tid,omitempty"`
+	Num   int64  `protobuf:"varint,3,opt,name=num,proto3" json:"num,omitempty"`
+	Ctime int64  `protobuf:"varint,4,opt,name=ctime,proto3" json:"ctime,omitempty"` //获得时间
+}
+
+func (x *AItem) Reset() {
+	*x = AItem{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ret_common_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *AItem) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AItem) ProtoMessage() {}
+
+func (x *AItem) ProtoReflect() protoreflect.Message {
+	mi := &file_ret_common_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AItem.ProtoReflect.Descriptor instead.
+func (*AItem) Descriptor() ([]byte, []int) {
+	return file_ret_common_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AItem) GetUid() uint64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *AItem) GetTid() int32 {
+	if x != nil {
+		return x.Tid
+	}
+	return 0
+}
+
+func (x *AItem) GetNum() int64 {
+	if x != nil {
+		return x.Num
+	}
+	return 0
+}
+
+func (x *AItem) GetCtime() int64 {
+	if x != nil {
+		return x.Ctime
+	}
+	return 0
+}
+
+// 英雄
+type Hero struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Uid    uint64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
+	HeroId uint64 `protobuf:"varint,2,opt,name=heroId,proto3" json:"heroId,omitempty"`
+}
+
+func (x *Hero) Reset() {
+	*x = Hero{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_ret_common_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *Hero) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Hero) ProtoMessage() {}
+
+func (x *Hero) ProtoReflect() protoreflect.Message {
+	mi := &file_ret_common_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Hero.ProtoReflect.Descriptor instead.
+func (*Hero) Descriptor() ([]byte, []int) {
+	return file_ret_common_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *Hero) GetUid() uint64 {
+	if x != nil {
+		return x.Uid
+	}
+	return 0
+}
+
+func (x *Hero) GetHeroId() uint64 {
+	if x != nil {
+		return x.HeroId
+	}
+	return 0
+}
+
 var File_ret_common_proto protoreflect.FileDescriptor
 
 var file_ret_common_proto_rawDesc = []byte{
@@ -84,9 +324,23 @@ var file_ret_common_proto_rawDesc = []byte{
 	0x12, 0x1d, 0x0a, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x09,
 	0x2e, 0x72, 0x65, 0x74, 0x2e, 0x43, 0x6f, 0x64, 0x65, 0x52, 0x04, 0x63, 0x6f, 0x64, 0x65, 0x12,
 	0x10, 0x0a, 0x03, 0x64, 0x65, 0x73, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x64, 0x65,
-	0x73, 0x42, 0x1a, 0x5a, 0x18, 0x67, 0x72, 0x61, 0x69, 0x6e, 0x5f, 0x67, 0x61, 0x6d, 0x65, 0x2f,
-	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x72, 0x65, 0x74, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x73, 0x22, 0x2b, 0x0a, 0x05, 0x54, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x10, 0x0a, 0x03, 0x74, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x03, 0x74, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03,
+	0x6e, 0x75, 0x6d, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x22, 0x2b,
+	0x0a, 0x05, 0x55, 0x49, 0x74, 0x65, 0x6d, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x04, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x22, 0x53, 0x0a, 0x05, 0x41,
+	0x49, 0x74, 0x65, 0x6d, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x04, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x74, 0x69, 0x64, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x05, 0x52, 0x03, 0x74, 0x69, 0x64, 0x12, 0x10, 0x0a, 0x03, 0x6e, 0x75, 0x6d, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x03, 0x6e, 0x75, 0x6d, 0x12, 0x14, 0x0a, 0x05, 0x63, 0x74,
+	0x69, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x63, 0x74, 0x69, 0x6d, 0x65,
+	0x22, 0x30, 0x0a, 0x04, 0x48, 0x65, 0x72, 0x6f, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x16, 0x0a, 0x06, 0x68, 0x65,
+	0x72, 0x6f, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x06, 0x68, 0x65, 0x72, 0x6f,
+	0x49, 0x64, 0x42, 0x1a, 0x5a, 0x18, 0x67, 0x72, 0x61, 0x69, 0x6e, 0x5f, 0x67, 0x61, 0x6d, 0x65,
+	0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x72, 0x65, 0x74, 0x62, 0x06,
+	0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -101,13 +355,17 @@ func file_ret_common_proto_rawDescGZIP() []byte {
 	return file_ret_common_proto_rawDescData
 }
 
-var file_ret_common_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_ret_common_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
 var file_ret_common_proto_goTypes = []interface{}{
 	(*Error)(nil), // 0: ret.Error
-	(Code)(0),     // 1: ret.Code
+	(*TItem)(nil), // 1: ret.TItem
+	(*UItem)(nil), // 2: ret.UItem
+	(*AItem)(nil), // 3: ret.AItem
+	(*Hero)(nil),  // 4: ret.Hero
+	(Code)(0),     // 5: ret.Code
 }
 var file_ret_common_proto_depIdxs = []int32{
-	1, // 0: ret.Error.code:type_name -> ret.Code
+	5, // 0: ret.Error.code:type_name -> ret.Code
 	1, // [1:1] is the sub-list for method output_type
 	1, // [1:1] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name
@@ -134,6 +392,54 @@ func file_ret_common_proto_init() {
 				return nil
 			}
 		}
+		file_ret_common_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TItem); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ret_common_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*UItem); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ret_common_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*AItem); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_ret_common_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Hero); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -141,7 +447,7 @@ func file_ret_common_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_ret_common_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

@@ -2,11 +2,11 @@ package iface2
 
 import "grain_game/proto/gen/ret"
 
-type IMail interface {
+type IMails interface {
 	IPlayerModule
 	SendMail()
-	ReadMail(mailId uint64)
-	DeleteMail(mailId uint64)
+	ReadMail(mailId uint64) ret.Code
+	DeleteMail(mailId uint64) ret.Code
 	GetMailReward(mailId uint64) ret.Code
 	GetMails(mailIds []uint64)
 }

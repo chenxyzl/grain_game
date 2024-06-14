@@ -6,7 +6,7 @@ import (
 
 type IPlayerModule interface {
 	iface1.IModule
-	OnInit()
+	OnInit() //注: init中不要调用其他模块的方法，因为还没初始化完成
 	OnStarted()
 	OnPreStop()
 	OnTickFun(nowUnix int64)

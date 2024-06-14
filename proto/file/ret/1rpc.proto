@@ -1,11 +1,24 @@
 syntax = "proto3";
+
 package ret;
-option  go_package = "grain_game/proto/gen/ret";
+
+option go_package = "grain_game/proto/gen/ret";
+
+//Rpc定义
+message Rpc {
+    //消息-对应的id【根据名字自动映射】
+    enum Id {
+        Null = 0;
+        Heartbeat = 10000;
+        GetUserInfo = 10001;
+        GetMails = 10002;
+    }
+}
 
 //请求
 message ReqPack {
     uint64 sn = 1; //流水号 request/reply
-    int32 rpcId = 2; //rpcId all
+    int32 rpcId = 2;  //rpcId all
     bytes data = 4; //消息体 all
 }
 //应答

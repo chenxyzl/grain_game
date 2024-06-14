@@ -8,3 +8,28 @@ message Error {
     Code code = 1; //错误码
     string des = 2; //描述
 }
+
+//模板id和数量
+message TItem {
+    int32 tid = 1;
+    int64 num = 2;
+}
+
+//唯一id和数量
+message UItem {
+    uint64 uid = 1;
+    int64 num = 2;
+}
+
+//背包道具
+message AItem {
+    uint64 uid = 1;
+    int32 tid = 2;
+    int64 num = 3;
+    int64 ctime = 4; //获得时间
+}
+//英雄
+message Hero {
+    uint64 uid = 1;
+    uint64 heroId =2;
+}

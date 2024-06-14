@@ -14,8 +14,8 @@ type UItem struct {
 
 // AItem 背包道具数据
 type AItem struct {
-	uid             uint64 `bson:"uid"`               //唯一id
-	tid             int32  `bson:"tid"`               //模板id
-	num             int64  `bson:"num"`               //数量
-	receiveTimeUnix int64  `bson:"receive_time_unix"` //时间 如果0表示不限时
+	uid            uint64 `bson:"uid"`              //唯一id
+	tid            int32  `bson:"tid"`              //模板id
+	num            int64  `bson:"num"`              //数量
+	createTimeUnix int64  `bson:"create_time_unix"` //时间 如果0表示不限时
 }
