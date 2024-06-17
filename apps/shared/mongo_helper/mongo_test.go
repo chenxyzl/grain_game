@@ -27,7 +27,7 @@ func TestMongo(t *testing.T) {
 		Id   uint64 `bson:"_id,omitempty"`
 		Name string `bson:"name"`
 	}
-	var res TestStruct
+	var res = TestStruct{}
 	err = GetColByName("test").FindOne(context.Background(), filter).Decode(&res)
 	if err != nil {
 		if errors.Is(err, mongo.ErrNoDocuments) {
