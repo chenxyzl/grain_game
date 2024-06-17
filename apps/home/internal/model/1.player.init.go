@@ -5,10 +5,9 @@ import (
 	"errors"
 	"fmt"
 	"go.mongodb.org/mongo-driver/bson"
-	"go.mongodb.org/mongo-driver/mongo"
 )
 
-func (player *Player) Init(db *mongo.Database) error {
+func (player *Player) Init() error {
 	filter := bson.D{{"_id", player.uid}}
 	err := db.Collection("player").FindOne(context.TODO(), filter).Decode(player)
 	if err != nil {
