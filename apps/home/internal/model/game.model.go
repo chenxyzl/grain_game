@@ -1,6 +1,9 @@
 package model
 
+import "github.com/chenxyzl/gsgen/gsmodel"
+
 type Game struct {
-	bag   *Bag   `bson:"bag"`
-	mails *Mails `bson:"mails"`
+	gsmodel.DirtyModel `bson:"-"`
+	bag                *Bag   `bson:"bag"`
+	mails              *Mails `bson:"mails"`
 }

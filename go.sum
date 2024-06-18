@@ -1,6 +1,7 @@
-github.com/chenxyzl/grain v1.0.3 h1:VOUh1psW9VFcqD0Q4vwmtzf1bakZ9RXFBcBEXg0GRak=
-github.com/chenxyzl/grain v1.0.3/go.mod h1:ClGxcqM1MNGaSNpYMxSQp3al5BTCM/YwR7sEF5UfsBs=
+github.com/chenxyzl/grain v1.0.4 h1:Z22PgBKTtwsC7vAHCvXRBD7V5rirXNhGsy3oMeAet9Y=
 github.com/chenxyzl/grain v1.0.4/go.mod h1:ClGxcqM1MNGaSNpYMxSQp3al5BTCM/YwR7sEF5UfsBs=
+github.com/chenxyzl/gsgen/gsmodel v0.0.0-20240618082814-f6e22fef92b0 h1:B9JI+kfAK0sFiRvkEd2mjXA/kwC/hQZmonIHc85uPco=
+github.com/chenxyzl/gsgen/gsmodel v0.0.0-20240618082814-f6e22fef92b0/go.mod h1:+8o4AnfGGALSjBAoOezxLw97c37RO+LsSK/CQz36V+w=
 github.com/coreos/go-semver v0.3.1 h1:yi21YpKnrx1gt5R+la8n5WgS0kCrsPp33dmEyHReZr4=
 github.com/coreos/go-semver v0.3.1/go.mod h1:irMmmIw/7yzSRPWryHsK7EYSg09caPQL03VsM8rvUec=
 github.com/coreos/go-systemd/v22 v22.5.0 h1:RrqgGjYQKalulkV8NGVIfkXQf6YYmOyiJKk8iXXhfZs=
@@ -49,8 +50,8 @@ go.etcd.io/etcd/client/pkg/v3 v3.5.13 h1:RVZSAnWWWiI5IrYAXjQorajncORbS0zI48LQlE2
 go.etcd.io/etcd/client/pkg/v3 v3.5.13/go.mod h1:XxHT4u1qU12E2+po+UVPrEeL94Um6zL58ppuJWXSAB8=
 go.etcd.io/etcd/client/v3 v3.5.13 h1:o0fHTNJLeO0MyVbc7I3fsCf6nrOqn5d+diSarKnB2js=
 go.etcd.io/etcd/client/v3 v3.5.13/go.mod h1:cqiAeY8b5DEEcpxvgWKsbLIWNM/8Wy2xJSDMtioMcoI=
-go.mongodb.org/mongo-driver v1.15.0 h1:rJCKC8eEliewXjZGf0ddURtl7tTVy1TK3bfl0gkUSLc=
-go.mongodb.org/mongo-driver v1.15.0/go.mod h1:Vzb0Mk/pa7e6cWw85R4F/endUC3u0U9jGcNU603k65c=
+go.mongodb.org/mongo-driver v1.15.1 h1:l+RvoUOoMXFmADTLfYDm7On9dRm7p4T80/lEQM+r7HU=
+go.mongodb.org/mongo-driver v1.15.1/go.mod h1:Vzb0Mk/pa7e6cWw85R4F/endUC3u0U9jGcNU603k65c=
 go.uber.org/goleak v1.3.0 h1:2K3zAYmnTNqV73imy9J1T3WC+gmCePx2hEGkimedGto=
 go.uber.org/goleak v1.3.0/go.mod h1:CoHD4mav9JJNrW/WLlf7HGZPjdw8EucARQHekz1X6bE=
 go.uber.org/multierr v1.11.0 h1:blXXJkSxSSfBVBlC76pxqeO+LN3aDfLQo+309xJstO0=

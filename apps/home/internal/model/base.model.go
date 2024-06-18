@@ -1,5 +1,8 @@
 package model
 
+import "github.com/chenxyzl/gsgen/gsmodel"
+
 type Base struct {
-	name string `bson:"name"`
+	gsmodel.DirtyModel `bson:"-"`
+	name               string `bson:"name"`
 }
