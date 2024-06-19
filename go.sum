@@ -1,7 +1,7 @@
 github.com/chenxyzl/grain v1.0.4 h1:Z22PgBKTtwsC7vAHCvXRBD7V5rirXNhGsy3oMeAet9Y=
 github.com/chenxyzl/grain v1.0.4/go.mod h1:ClGxcqM1MNGaSNpYMxSQp3al5BTCM/YwR7sEF5UfsBs=
-github.com/chenxyzl/gsgen/gsmodel v0.0.0-20240618082814-f6e22fef92b0 h1:B9JI+kfAK0sFiRvkEd2mjXA/kwC/hQZmonIHc85uPco=
-github.com/chenxyzl/gsgen/gsmodel v0.0.0-20240618082814-f6e22fef92b0/go.mod h1:+8o4AnfGGALSjBAoOezxLw97c37RO+LsSK/CQz36V+w=
+github.com/chenxyzl/gsgen/gsmodel v0.0.0-20240619075335-468b4b090aec h1:3GqHvgOdaXWUSShzNpR6ZFbzKZ3+VFzTsSjpNwAGNRo=
+github.com/chenxyzl/gsgen/gsmodel v0.0.0-20240619075335-468b4b090aec/go.mod h1:+8o4AnfGGALSjBAoOezxLw97c37RO+LsSK/CQz36V+w=
 github.com/coreos/go-semver v0.3.1 h1:yi21YpKnrx1gt5R+la8n5WgS0kCrsPp33dmEyHReZr4=
 github.com/coreos/go-semver v0.3.1/go.mod h1:irMmmIw/7yzSRPWryHsK7EYSg09caPQL03VsM8rvUec=
 github.com/coreos/go-systemd/v22 v22.5.0 h1:RrqgGjYQKalulkV8NGVIfkXQf6YYmOyiJKk8iXXhfZs=

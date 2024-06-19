@@ -1,8 +1,8 @@
 package bag
 
 import (
+	"grain_game/apps/common_model"
 	"grain_game/apps/home/internal/iface1"
-	"grain_game/apps/home/internal/model"
 	"grain_game/proto/gen/ret"
 )
 
@@ -12,11 +12,11 @@ type Bag struct {
 	iface1.BasePlayerModule
 }
 
-func (m *Bag) Add(items ...*model.AItem) {}
+func (m *Bag) Add(items ...*common_model.AItem) {}
 
-func (m *Bag) RemoveM(items ...*model.AItem) {}
+func (m *Bag) RemoveM(items ...*common_model.AItem) {}
 
-func (m *Bag) RemoveE(items ...*model.AItem) ret.Code {
+func (m *Bag) RemoveE(items ...*common_model.AItem) ret.Code {
 	return ret.Code_Ok
 }
 

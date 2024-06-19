@@ -22,7 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// 获取服务器列表
+//获取服务器列表
 type GetServerList struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

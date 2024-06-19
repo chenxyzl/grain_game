@@ -4,7 +4,7 @@ go 1.22
 
 require (
 	github.com/chenxyzl/grain v1.0.4
-	github.com/chenxyzl/gsgen/gsmodel v0.0.0-20240618082814-f6e22fef92b0
+	github.com/chenxyzl/gsgen/gsmodel v0.0.0-20240619075335-468b4b090aec
 	github.com/gobwas/ws v1.4.0
 	github.com/golang/protobuf v1.5.4
 	go.mongodb.org/mongo-driver v1.15.1

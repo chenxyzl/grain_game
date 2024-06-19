@@ -75,7 +75,7 @@ func (x *Error) GetDes() string {
 	return ""
 }
 
-// 模板id和数量
+//模板id和数量
 type TItem struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -131,7 +131,7 @@ func (x *TItem) GetNum() int64 {
 	return 0
 }
 
-// 唯一id和数量
+//唯一id和数量
 type UItem struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -187,7 +187,7 @@ func (x *UItem) GetNum() int64 {
 	return 0
 }
 
-// 背包道具
+//背包道具
 type AItem struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -259,7 +259,7 @@ func (x *AItem) GetCtime() int64 {
 	return 0
 }
 
-// 英雄
+//英雄
 type Hero struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

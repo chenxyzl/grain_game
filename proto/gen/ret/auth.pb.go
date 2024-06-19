@@ -22,7 +22,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// 登录请求-返回token
+//登录请求-返回token
 type Login struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

@@ -1,4 +1,4 @@
-package model
+package home_model
 
 import "github.com/chenxyzl/gsgen/gsmodel"
 

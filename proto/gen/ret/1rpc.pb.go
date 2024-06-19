@@ -20,7 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// 消息-对应的id【根据名字自动映射】
+//消息-对应的id【根据名字自动映射】
 type Rpc_Id int32
 
 const (
@@ -76,7 +76,7 @@ func (Rpc_Id) EnumDescriptor() ([]byte, []int) {
 	return file_ret_1rpc_proto_rawDescGZIP(), []int{0, 0}
 }
 
-// Rpc定义
+//Rpc定义
 type Rpc struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -115,7 +115,7 @@ func (*Rpc) Descriptor() ([]byte, []int) {
 	return file_ret_1rpc_proto_rawDescGZIP(), []int{0}
 }
 
-// 请求
+//请求
 type ReqPack struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -179,7 +179,7 @@ func (x *ReqPack) GetData() []byte {
 	return nil
 }
 
-// 应答
+//应答
 type ReplyPack struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

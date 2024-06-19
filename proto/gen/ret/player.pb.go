@@ -20,7 +20,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// 心跳
+//心跳
 type Heartbeat struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -59,7 +59,7 @@ func (*Heartbeat) Descriptor() ([]byte, []int) {
 	return file_ret_player_proto_rawDescGZIP(), []int{0}
 }
 
-// 获取用户数据
+//获取用户数据
 type GetUserInfo struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -98,7 +98,7 @@ func (*GetUserInfo) Descriptor() ([]byte, []int) {
 	return file_ret_player_proto_rawDescGZIP(), []int{1}
 }
 
-// 获取邮件
+//获取邮件
 type GetMails struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -369,7 +369,7 @@ func (x *GetUserInfo_Base) GetName() string {
 	return ""
 }
 
-// 可根据情况拆分-单独请求此数据
+//可根据情况拆分-单独请求此数据
 type GetUserInfo_Bag struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -519,7 +519,7 @@ func (x *GetMails_Reply) GetMails() []*GetMails_Mail {
 	return nil
 }
 
-// 模块
+//模块
 type GetMails_Mail struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

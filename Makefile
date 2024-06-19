@@ -60,7 +60,11 @@ proto: version
 	protoc -I=./proto/file --go-new_out=paths=source_relative:./proto/gen ./proto/file/inner/*.proto
 	protoc -I=./proto/file --go-new_out=paths=source_relative:./proto/gen ./proto/file/ret/*.proto
 
+
+
+IGNORETYPE := "grain_game/apps/common_model,grain_game/apps/common_model.AItem"
 model:version
-	gsgen_tools -d="$(CURRENT_DIR)/apps/home/internal/model" -f=".model.go" -s -b
+	gsgen_tools -d="$(CURRENT_DIR)/apps/common_model/" -f=".model.go" -s -b
+	gsgen_tools -d="$(CURRENT_DIR)/apps/home/internal/home_model" -f=".model.go" -s -b -i=$(IGNORETYPE)
 
 .PHONY: proto
