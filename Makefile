@@ -61,6 +61,6 @@ proto: version
 	protoc -I=./proto/file --go-new_out=paths=source_relative:./proto/gen ./proto/file/ret/*.proto
 
 model:version
-	gsgen_tools -d="./apps/home/internal/model" -f=".model.go" -s -b
+	gsgen_tools -d="$(CURRENT_DIR)/apps/home/internal/model" -f=".model.go" -s -b
 
 .PHONY: proto
