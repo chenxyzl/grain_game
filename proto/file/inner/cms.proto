@@ -1,7 +1,7 @@
 syntax = "proto3";
 package pbi;
 option  go_package = "grain_game/proto/gen/pbi";
-import "inner/_common.proto";
+import "inner/common.proto";
 
 //发送邮件 - toUid==1表示全局邮件
 //全局邮件设计

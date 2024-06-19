@@ -2,7 +2,7 @@ syntax = "proto3";
 package pbi;
 option  go_package = "grain_game/proto/gen/pbi";
 
-import "inner/_common.proto";
+import "inner/common.proto";
 
 //online--gateway通知player在线
 message Online {
