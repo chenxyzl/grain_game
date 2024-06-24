@@ -8,7 +8,7 @@ import (
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"
 	"github.com/golang/protobuf/proto"
-	"grain_game/apps/common"
+	"grain_game/apps/_common"
 	"grain_game/apps/gate/internal/constant1"
 	"grain_game/apps/shared/utils"
 	"grain_game/proto/gen/ret"
@@ -52,6 +52,7 @@ func (wss *WebsocketServer) Started() {
 			}
 		}
 	}()
+	//todo: register to etcd
 	wss.Logger().Info("websocket server start success", "ln.addr", ln.Addr(), "addr", addr, "path", wss.path)
 }
 
