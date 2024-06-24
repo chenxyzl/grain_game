@@ -1,0 +1,6 @@
+#集群的名字
+app = "grain_game"
+#集群的版本号
+version = "0.0.1"
+#集群的etcd地址
+etcd = []

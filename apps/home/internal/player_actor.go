@@ -56,10 +56,11 @@ func (p *Player) Receive(ctx actor.Context) {
 			p.Logger().Error("receive unexpect panic", "err", e)
 		}
 	})
-	switch _ := ctx.Message().(type) {
+	switch typ := ctx.Message().(type) {
 	case *pbi.Tick:
 		p.onTick()
 	default:
+		_ = typ
 		if ctx.Sender().GetKind() == common.SessionKind {
 			//todo 外部rpc分发
 		} else {

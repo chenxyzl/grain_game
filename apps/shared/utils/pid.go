@@ -9,7 +9,14 @@ import (
 )
 
 // CreatePid 创建pid文件
-func CreatePid(logger *slog.Logger) string {
+// @return pid文件全路径
+// @return 进程名字
+// @return 进程id
+func CreatePid(logger ...*slog.Logger) string {
+	var _logger = slog.Default()
+	if len(logger) > 0 {
+		_logger = logger[0]
+	}
 	// create pid file
 	arg0, err := exec.LookPath(os.Args[0])
 	if err != nil {
@@ -26,18 +33,23 @@ func CreatePid(logger *slog.Logger) string {
 	if err != nil {
 		panic(err)
 	}
-	logger.Info("create pid success", "pid", pid)
+	_logger.Info("create pid success", "pid", pid)
 	return pid
 }
 
 // RemovePid 删除pid文件
-func RemovePid(pid string, logger *slog.Logger) {
+func RemovePid(pid string, logger ...*slog.Logger) {
+	var _logger = slog.Default()
+	if len(logger) > 0 {
+		_logger = logger[0]
+	}
+
 	if pid != "" {
 		err := os.Remove(pid)
 		if err != nil {
-			logger.Error("remove pid failed", "pid", pid, "err", err)
+			_logger.Error("remove pid failed", "pid", pid, "err", err)
 		} else {
-			logger.Info("remove pid success", "pid", pid)
+			_logger.Info("remove pid success", "pid", pid)
 		}
 	}
 }
