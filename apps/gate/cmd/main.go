@@ -13,7 +13,7 @@ import (
 
 func main() {
 	runner.Run(func() {
-		actor.InitLog(fmt.Sprintf("./%v.%v.log", utils.GetExecName(), os.Getegid()))
+		actor.InitLog(fmt.Sprintf("./%v.%v.log", utils.GetExecName(), os.Getpid()))
 		//cConfig
 		cConfig := actor.NewConfig(config.String("app"), config.String("version"), config.Strings("etcd"))
 		//system
