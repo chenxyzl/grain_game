@@ -1,7 +1,7 @@
 # grain_game
 - ~~gsgen接入 完成~~
 - ~~model整理接入 完成~~
-- todo 配置整理接入
+- ~~配置整理接入 完成~~
 - todo 表(excel直接解析)整理接入
 - todo rpc分发整理
 - todo demo业务整理(卡牌/slg)+实现
