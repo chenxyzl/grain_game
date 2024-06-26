@@ -8,8 +8,8 @@ import (
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"
 	"github.com/golang/protobuf/proto"
-	"grain_game/apps/_common"
 	"grain_game/apps/gate/internal/constant1"
+	"grain_game/apps/shared/config"
 	"grain_game/apps/shared/utils"
 	"grain_game/proto/gen/ret"
 	"io"
@@ -52,8 +52,11 @@ func (wss *WebsocketServer) Started() {
 			}
 		}
 	}()
-	//todo: register to etcd
-	wss.Logger().Info("websocket server start success", "ln.addr", ln.Addr(), "addr", addr, "path", wss.path)
+	err = wss.System().GetProvider().SetNodeExtData(config.Get().GetGate().GetWssubkey(), ln.Addr().String())
+	if err != nil {
+		panic(errors.Join(err, errors.New("websocket server set node ext data fail")))
+	}
+	wss.Logger().Info("websocket server start success", "websocket.addr", ln.Addr(), "websocket.addr", addr, "websocket.wsPath", wss.path)
 }
 
 func (wss *WebsocketServer) PreStop() {
@@ -101,7 +104,7 @@ func (wss *WebsocketServer) helpersHighLevelHandler(w http.ResponseWriter, r *ht
 }
 
 func (wss *WebsocketServer) createSession(conn net.Conn) {
-	sess := wss.System().Spawn(func() actor.IActor { return newSession(wss.Self(), conn) }, actor.WithOptsKindName(common.SessionKind))
+	sess := wss.System().Spawn(func() actor.IActor { return newSession(wss.Self(), conn) }, actor.WithOptsKindName(common.common.SessionKind))
 	wss.sessions.Set(sess.GetId(), sess)
 	defer func() { wss.sessions.Delete(sess.GetId()); wss.System().Poison(sess) }()
 	wss.Logger().Info("session created", "id", sess.GetId())

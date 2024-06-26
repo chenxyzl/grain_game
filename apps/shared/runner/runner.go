@@ -2,10 +2,9 @@ package runner
 
 import (
 	"fmt"
-	"github.com/gookit/config/v2"
-	"github.com/gookit/config/v2/toml"
 	"github.com/spf13/cobra"
 	"grain_game"
+	"grain_game/apps/shared/config"
 	"grain_game/apps/shared/utils"
 	"os"
 )
@@ -27,9 +26,8 @@ func Run(f func()) {
 			if len(configs) == 0 {
 				panic(fmt.Sprintf("param parse err: configs, len:0"))
 			}
-			config.WithOptions(config.ParseEnv)
-			config.AddDriver(toml.Driver)
-			err = config.LoadFiles(configs...)
+			config.Init(configs...)
+			err = config.Reload()
 			if err != nil {
 				panic(err)
 			}

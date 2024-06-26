@@ -62,9 +62,12 @@ proto: version
 
 
 
-IGNORETYPE := "grain_game/apps/common_model,grain_game/apps/common_model.AItem"
+IGNORETYPE := "grain_game/apps/shared/common_model,grain_game/apps/shared/common_model.AItem"
 model:version
-	gsgen_tools -d="$(CURRENT_DIR)/apps/common_model/" -f=".model.go" -s -b
+	gsgen_tools -d="$(CURRENT_DIR)/apps/shared/common_model/" -f=".model.go" -s -b
 	gsgen_tools -d="$(CURRENT_DIR)/apps/home/internal/home_model" -f=".model.go" -s -b -i=$(IGNORETYPE)
+
+config:version
+	gsgen_tools -d="$(CURRENT_DIR)/apps/shared/config/" -f=".conf.go"
 
 .PHONY: proto

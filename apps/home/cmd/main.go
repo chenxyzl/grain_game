@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 	"github.com/chenxyzl/grain/actor"
-	"github.com/gookit/config/v2"
-	"grain_game/apps/_common"
-	"grain_game/apps/_runner"
 	"grain_game/apps/home/internal"
+	"grain_game/apps/shared/common"
+	"grain_game/apps/shared/config"
+	"grain_game/apps/shared/runner"
 	"grain_game/apps/shared/utils"
 	"os"
 )
@@ -15,7 +15,7 @@ func main() {
 	runner.Run(func() {
 		actor.InitLog(fmt.Sprintf("./%v.%v.log", utils.GetExecName(), os.Getpid()))
 		//cConfig
-		cConfig := actor.NewConfig(config.String("app"), config.String("version"), config.Strings("etcd"),
+		cConfig := actor.NewConfig(config.Get().GetApp(), config.Get().GetVersion(), config.Get().GetEtcd().ToList(),
 			actor.WithConfigKind(common.PlayerKind, func() actor.IActor { return internal.NewPlayer() }))
 		//system
 		system := actor.NewSystem[*actor.ProviderEtcd](cConfig)

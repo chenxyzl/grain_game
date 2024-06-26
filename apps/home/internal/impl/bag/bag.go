@@ -1,8 +1,8 @@
 package bag
 
 import (
-	"grain_game/apps/common_model"
 	"grain_game/apps/home/internal/iface1"
+	"grain_game/apps/shared/common_model"
 	"grain_game/proto/gen/ret"
 )
 

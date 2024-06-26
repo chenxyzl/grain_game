@@ -2,8 +2,8 @@ package internal
 
 import (
 	"github.com/chenxyzl/grain/actor"
-	"grain_game/apps/_common"
 	"grain_game/apps/home/internal/iface1"
+	"grain_game/apps/shared/common"
 	"grain_game/apps/shared/iface"
 	"grain_game/apps/shared/utils"
 	pbi "grain_game/proto/gen/inner"

@@ -1,4 +1,2 @@
 #集群的名字
 app = "grain_game_dev"
-#集群的etcd地址
-etcd = ["127.0.0.1:2379"]
