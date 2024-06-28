@@ -1,0 +1,16 @@
+syntax = "proto3";
+package ret;
+option  go_package = "grain_game/proto/gen/ret";
+
+//资产类型----游戏产出逻辑上一切都是资源
+message AssetType{
+    enum Def {
+        unknown = 0;
+        currency = 1; //货币 10000~19999
+        item = 2; //普通道具--通常放背包
+        hero = 3; //英雄--
+        skin = 4; //皮肤--
+        bgm = 5; //背景音乐
+        bem = 6; //播报音效
+    }
+}

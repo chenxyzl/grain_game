@@ -3,7 +3,7 @@ package ret;
 option  go_package = "grain_game/proto/gen/ret";
 
 enum Code {
-    Ok = 0;
-    IsNil = 1; //
-    IsFalse = 2;
+    ok = 0;
+    isNil = 1; //
+    isFalse = 2;
 }

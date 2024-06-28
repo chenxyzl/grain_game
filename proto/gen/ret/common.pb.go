@@ -65,7 +65,7 @@ func (x *Error) GetCode() Code {
 	if x != nil {
 		return x.Code
 	}
-	return Code_Ok
+	return Code_ok
 }
 
 func (x *Error) GetDes() string {
@@ -266,7 +266,7 @@ type Hero struct {
 	unknownFields protoimpl.UnknownFields
 
 	Uid    uint64 `protobuf:"varint,1,opt,name=uid,proto3" json:"uid,omitempty"`
-	HeroId uint64 `protobuf:"varint,2,opt,name=heroId,proto3" json:"heroId,omitempty"`
+	HeroId uint64 `protobuf:"varint,2,opt,name=heroId,proto3" json:"heroId,omitempty"` //other prop
 }
 
 func (x *Hero) Reset() {

@@ -32,4 +32,5 @@ message BItem {
 message Hero {
     uint64 uid = 1;
     uint64 heroId =2;
+    //other prop
 }

@@ -30,8 +30,10 @@ message GetUserInfo {
     }
     //可根据情况拆分-单独请求此数据
     message Bag {
-        map<uint64, BItem> items = 1; //道具
-        map<uint64, Hero> heroes = 2;         //英雄
+        //通用资产包
+        map<uint64, BItem> assets = 1; //道具/皮肤/...
+        //有特殊属性的单独成包
+        map<uint64, Hero> heroes = 2; //英雄
     }
     //
 }
