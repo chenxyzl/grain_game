@@ -1,9 +1,11 @@
 package config
 
 import (
+	"encoding/json"
+	"errors"
 	"github.com/chenxyzl/gsgen/gsmodel"
-	config_base "github.com/gookit/config/v2"
-	"github.com/gookit/config/v2/toml"
+	"github.com/spf13/viper"
+	"os"
 	"sync/atomic"
 )
 
@@ -33,15 +35,45 @@ func Init(configFiles ...string) {
 }
 
 func Reload() error {
-	config_base.ClearAll()
-	config_base.WithOptions(config_base.ParseEnv)
-	config_base.AddDriver(toml.Driver)
-	err := config_base.LoadFiles(globalConfigFiles...)
+	err := loadFile()
+	if err == nil {
+		return nil
+	}
+	if globalConfig.Load() == nil {
+		return errors.Join(err, errors.New("first load config err"))
+	} else {
+		return errors.Join(err, errors.New("reload config err"))
+	}
+}
+
+// load config file, will fire OnLoadData event
+func loadFile() error {
+	//
+	viper.Reset()
+	//
+	viper.SetConfigType("toml") // or viper.SetConfigType("YAML")
+	//
+	for _, file := range globalConfigFiles {
+		fd, err := os.Open(file)
+		if err != nil {
+			return err
+		}
+		//noinspection GoUnhandledErrorResult
+		defer fd.Close()
+		//
+		err = viper.MergeConfig(fd)
+		if err != nil {
+			return err
+		}
+	}
+
+	s, err := viper.MarshalToString("json")
 	if err != nil {
 		return err
 	}
-	var conf = &Config{}
-	err = config_base.Decode(conf)
+
+	conf := &Config{}
+	err = json.Unmarshal([]byte(s), conf)
 	if err != nil {
 		return err
 	}

@@ -1,19 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"github.com/chenxyzl/grain/actor"
 	"grain_game/apps/home/internal"
 	"grain_game/apps/shared/common"
 	"grain_game/apps/shared/config"
 	"grain_game/apps/shared/runner"
-	"grain_game/apps/shared/utils"
-	"os"
 )
 
 func main() {
 	runner.Run(func() {
-		actor.InitLog(fmt.Sprintf("./%v.%v.log", utils.GetExecName(), os.Getpid()))
 		//cConfig
 		cConfig := actor.NewConfig(config.Get().GetApp(), config.Get().GetVersion(), config.Get().GetEtcd().ToList(),
 			actor.WithConfigKind(common.PlayerKind, func() actor.IActor { return internal.NewPlayer() }))

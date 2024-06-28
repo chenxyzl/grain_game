@@ -2,14 +2,19 @@ package runner
 
 import (
 	"fmt"
+	"github.com/chenxyzl/grain/actor"
 	"github.com/spf13/cobra"
 	"grain_game"
 	"grain_game/apps/shared/config"
 	"grain_game/apps/shared/utils"
+	"log/slog"
 	"os"
+	"time"
 )
 
 func Run(f func()) {
+	//log
+	actor.InitLog(fmt.Sprintf("./%v_%v.%v.log", utils.GetExecName(), time.Now().Format("20060102150405"), os.Getpid()), slog.LevelInfo)
 	//pid
 	pidPath := utils.CreatePid()
 	defer utils.RemovePid(pidPath)
