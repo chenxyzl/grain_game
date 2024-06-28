@@ -10,7 +10,7 @@ message Error {
 }
 
 //模板id和数量
-message TItem {
+message Item {
     int32 tid = 1;
     int64 num = 2;
 }
@@ -22,7 +22,7 @@ message UItem {
 }
 
 //背包道具
-message AItem {
+message BItem {
     uint64 uid = 1;
     int32 tid = 2;
     int64 num = 3;

@@ -30,7 +30,7 @@ message GetUserInfo {
     }
     //可根据情况拆分-单独请求此数据
     message Bag {
-        map<uint64, AItem> items = 1; //道具
+        map<uint64, BItem> items = 1; //道具
         map<uint64, Hero> heroes = 2;         //英雄
     }
     //
@@ -53,7 +53,7 @@ message GetMails {
         string fromName = 5; //发送方名字
         string title = 6; //标题
         string content = 7; //内容
-        repeated TItem rewards = 8; //奖励
+        repeated Item rewards = 8; //奖励
         map<string, string> params = 9; //参数
         int64 createTime = 10; //创建时间
         bool readTime = 11;    //存在则表示-已读
