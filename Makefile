@@ -62,12 +62,17 @@ proto: version
 
 
 
-IGNORETYPE := "grain_game/apps/shared/common_model,grain_game/apps/shared/common_model.AItem"
+IgnoreModelRef := "grain_game/apps/shared/common_model,grain_game/apps/shared/common_model.AItem"
 model:version
 	gsgen_tools -d="$(CURRENT_DIR)/apps/shared/common_model/" -f=".model.go" -s -b
-	gsgen_tools -d="$(CURRENT_DIR)/apps/home/internal/home_model" -f=".model.go" -s -b -i=$(IGNORETYPE)
+	gsgen_tools -d="$(CURRENT_DIR)/apps/home/internal/home_model" -f=".model.go" -s -b -i=$(IgnoreModelRef)
 
+IgnoreTableRef := "time.Time"
+table:version
+	gsgen_tools -d="$(CURRENT_DIR)/apps/shared/table/" -f="_table.go" -i=$(IgnoreTableRef)
+
+IgnoreConfigRef := ""
 config:version
-	gsgen_tools -d="$(CURRENT_DIR)/apps/shared/config/" -f=".conf.go"
+	gsgen_tools -d="$(CURRENT_DIR)/apps/shared/config/" -f=".conf.go" -i=$(IgnoreConfigRef)
 
-.PHONY: proto
+.PHONY: proto table
