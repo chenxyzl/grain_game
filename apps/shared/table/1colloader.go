@@ -4,17 +4,23 @@ type colLoader[T any] struct {
 	data T
 }
 
-// Load  unmarshal from csv
+// load  unmarshal from csv
 func (l *colLoader[T]) load(file string) error {
+	//todo parse excel
 	return nil
 }
 
-// AfterLoad overwrite for data
+// afterLoad overwrite for data
 func (l *colLoader[T]) afterLoad() error {
 	return nil
 }
 
-// Check overwrite for check
+// check overwrite for check
 func (l *colLoader[T]) check() error {
 	return nil
+}
+
+// Get return data
+func (l *colLoader[T]) Get() T {
+	return l.data
 }

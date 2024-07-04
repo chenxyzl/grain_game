@@ -1,12 +1,15 @@
 package table
 
-import "github.com/chenxyzl/gsgen/gsmodel"
+import (
+	"github.com/chenxyzl/gsgen/gsmodel"
+)
 
 type ConstElem struct {
-	testInt         int32                       `json:"test"`
-	testStr         int32                       `json:"test_str"`
-	testIntSlice    *gsmodel.AList[int32]       `json:"test_int_slice"`
-	testStrSlice    *gsmodel.AList[int32]       `json:"test_string_slice"`
-	testMap         *gsmodel.AMap[int32, int32] `json:"test_map"`
-	testMapWithType *gsmodel.AMap[int32, *Item] `json:"test_map_with_type"`
+	testInt         int32                       `json:"testInt"`
+	testStr         int32                       `json:"testString"`
+	testType        *Item                       `json:"testType"`
+	testIntSlice    *gsmodel.AList[int32]       `json:"testIntSlice"`
+	testStrSlice    *gsmodel.AList[int32]       `json:"testStringSlice"`
+	testMap         *gsmodel.AMap[int32, int32] `json:"testMap"`
+	testMapWithType *gsmodel.AMap[int32, *Item] `json:"testMapWithType"`
 }
