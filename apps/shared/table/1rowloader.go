@@ -168,7 +168,7 @@ func (l *rowLoader[K, T]) parseLink(row []string) {
 					if l.colLinkTable[idx][subRow[0]] == "" {
 						l.colLinkTable[idx][subRow[0]] = "[" + subRow[1] + "]"
 					} else {
-						//todo insert
+						l.colLinkTable[idx][subRow[0]] = l.colLinkTable[idx][subRow[0]][:len(l.colLinkTable[idx][subRow[0]])-1] + ";" + subRow[1] + "]"
 					}
 				}
 			} else if field.Type.Elem().Name() == "AMap" {
@@ -176,7 +176,7 @@ func (l *rowLoader[K, T]) parseLink(row []string) {
 					if l.colLinkTable[idx][subRow[0]] == "" {
 						l.colLinkTable[idx][subRow[0]] = "{" + subRow[1] + ":" + subRow[2] + "}"
 					} else {
-						//todo insert
+						l.colLinkTable[idx][subRow[0]] = l.colLinkTable[idx][subRow[0]][:len(l.colLinkTable[idx][subRow[0]])-1] + "," + subRow[1] + ":" + subRow[2] + "}"
 					}
 				}
 			} else {
