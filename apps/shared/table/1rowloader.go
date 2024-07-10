@@ -14,18 +14,21 @@ const subTag = "-"
 const nestTag = "+"
 const aliseTag = "="
 
+type tRowData = []string
+type tTableData = []tRowData
+
 type rowLoader[k comparable, T any] struct {
 	//数据相关
 	list []T     //数据 list
 	data map[k]T //数据的key/val
 	//解析相关~
-	fileFs      *excelize.File            //文件句柄 用于同表的lin和别名
-	excelName   string                    //excel名字
-	sheetName   string                    //sheet名字
-	idxes       map[string]int            //名字对应的索引
-	defaultVals map[int]string            //默认值
-	aliseName   map[int]map[string]string //别名
-	link        map[int][][]string        //子表
+	fileFs         *excelize.File            //文件句柄 用于同表的lin和别名
+	excelName      string                    //excel名字
+	sheetName      string                    //sheet名字
+	colIdxes       map[string]int            //名字对应的索引 name->colIdx
+	colDefaultVals map[int]string            //默认值 colIdx->defaultVal
+	colAliseName   map[int]map[string]string //别名 colIdx-alise-realVal
+	colLinkTable   map[int]map[string]string //子表 colIdx-id-[]tRowData
 }
 
 // load  unmarshal from csv
@@ -63,7 +66,7 @@ func (l *rowLoader[K, T]) load(file string) error {
 		case 1: //name, ignore
 		case 2: //default
 			l.parseDefault(row)
-		case 3: //link
+		case 3: //colLinkTable
 			l.parseLink(row)
 		case 4: //param type, ignore
 		case 5: //export type, ignore
@@ -110,7 +113,7 @@ func (l *rowLoader[K, T]) parseHeader(row []string) {
 		panic(errors.New("row[0] must named id, now is " + row[0]))
 	}
 
-	l.idxes = make(map[string]int)
+	l.colIdxes = make(map[string]int)
 	var t T
 	tt := reflect.TypeOf(t)
 Next:
@@ -119,7 +122,7 @@ Next:
 		tag := field.Tag.Get("json")
 		for colIdx, name := range row {
 			if name == tag {
-				l.idxes[tag] = colIdx
+				l.colIdxes[tag] = colIdx
 				break Next
 			}
 		}
@@ -127,43 +130,76 @@ Next:
 	}
 }
 func (l *rowLoader[K, T]) parseDefault(row []string) {
-	l.defaultVals = make(map[int]string)
-	for _, idx := range l.idxes {
-		l.defaultVals[idx] = row[idx]
+	l.colDefaultVals = make(map[int]string)
+	for _, idx := range l.colIdxes {
+		l.colDefaultVals[idx] = row[idx]
 	}
 }
 func (l *rowLoader[K, T]) parseLink(row []string) {
-	l.link = make(map[int][][]string)
-	l.aliseName = make(map[int]map[string]string)
-	for _, idx := range l.idxes {
+	l.colLinkTable = make(map[int]map[string]string)
+	l.colAliseName = make(map[int]map[string]string)
+	var t T
+	var refT = reflect.TypeOf(t)
+	for fieldName, idx := range l.colIdxes {
 		linkVal := row[idx]
 		if linkVal == "" {
 			continue
 		}
+		field, ok := refT.FieldByName(fieldName)
+		if !ok {
+			panic(errors.New("field not exist, field name:" + fieldName))
+		}
 		//
 		if subTables := strings.Split(linkVal, nestTag); len(subTables) == 2 { //parse nest table
-			val, err := l.readSubExcelSheet(subTables[0], subTables[1])
+			//todo 获取field对应的类型，如果是AMap/AList则~可以
+			subRows, err := l.readSubExcelSheet(subTables[0], subTables[1])
 			if err != nil {
 				panic(err)
 			}
-			l.link[idx] = val
-			//read other table and sheet
+			if field.Type.Kind() != reflect.Ptr {
+				panic(errors.New("refT must be ptr"))
+			}
+
+			if l.colLinkTable[idx] == nil {
+				l.colLinkTable[idx] = make(map[string]string)
+			}
+			if field.Type.Elem().Name() == "AList" {
+				for _, subRow := range subRows {
+					if l.colLinkTable[idx][subRow[0]] == "" {
+						l.colLinkTable[idx][subRow[0]] = "[" + subRow[1] + "]"
+					} else {
+						//todo insert
+					}
+				}
+			} else if field.Type.Elem().Name() == "AMap" {
+				for _, subRow := range subRows {
+					if l.colLinkTable[idx][subRow[0]] == "" {
+						l.colLinkTable[idx][subRow[0]] = "{" + subRow[1] + ":" + subRow[2] + "}"
+					} else {
+						//todo insert
+					}
+				}
+			} else {
+				panic(errors.New("refT must be gsmodel.AList or gsmodel.AMap"))
+			}
 		} else if nameAlise := strings.Split(linkVal, aliseTag); len(nameAlise) == 2 { //parse alise
 			rows, err := l.readSubExcelSheet(nameAlise[0], nameAlise[1])
 			if err != nil {
 				panic(err)
 			}
-			l.aliseName[idx] = make(map[string]string)
+			if l.colAliseName[idx] == nil {
+				l.colAliseName[idx] = make(map[string]string)
+			}
 			for i, aliseRow := range rows {
 				if i == 0 {
 					//第一行默认title
 					continue
 				}
 				//
-				l.aliseName[idx][aliseRow[0]] = nameAlise[1]
+				l.colAliseName[idx][aliseRow[0]] = nameAlise[1]
 			}
 		} else {
-			panic("link must \"|\" in table|sheet for sub table or \".\" in table.sheet for name alise")
+			panic("colLinkTable must \"|\" in table|sheet for sub table or \".\" in table.sheet for name alise")
 		}
 	}
 }
@@ -200,7 +236,8 @@ func (l *rowLoader[K, T]) readSubExcelSheet(excelName, sheetName string) ([][]st
 func (l *rowLoader[K, T]) parseData(row []string) {
 	var t T
 	value := reflect.ValueOf(t)
-	for fieldName, colIdx := range l.idxes {
+	//get id
+	for fieldName, colIdx := range l.colIdxes {
 		field := value.FieldByName(fieldName)
 		if !field.IsValid() {
 			panic(errors.New("field not exist, field fieldName:" + fieldName))
@@ -208,18 +245,20 @@ func (l *rowLoader[K, T]) parseData(row []string) {
 		val := row[colIdx]
 		//get val or default
 		if val == "" {
-			val = l.defaultVals[colIdx]
+			val = l.colDefaultVals[colIdx]
 		}
-
 		//check alise
-		if aliseMap, indexAliseOK := l.aliseName[colIdx]; indexAliseOK {
+		if aliseMap, indexAliseOK := l.colAliseName[colIdx]; indexAliseOK {
 			if aliseVal, aliseOk := aliseMap[val]; aliseOk {
 				val = aliseVal
 			}
-			continue
 		}
-		//todo check link
-		//todo map list format
+		//check link
+		if linkData, indexLinkOk := l.colLinkTable[colIdx]; indexLinkOk {
+			if subRowData, ok := linkData[row[0]]; ok {
+				val = subRowData
+			}
+		}
 		//parse data
 		switch field.Kind() {
 		case reflect.String:

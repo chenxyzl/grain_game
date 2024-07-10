@@ -36,7 +36,7 @@ func readExcel(excelFile string, sheetName string, rang func(rowData [][]string)
 		return errors.Join(fmt.Errorf("get rows err, excel:%v", excelFile), err)
 	}
 
-	//link
+	//colLinkTable
 
 	rang(rows)
 	return nil
