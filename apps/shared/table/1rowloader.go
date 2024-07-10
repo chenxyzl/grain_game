@@ -174,9 +174,9 @@ func (l *rowLoader[K, T]) parseLink(row []string) {
 			} else if field.Type.Elem().Name() == "AMap" {
 				for _, subRow := range subRows {
 					if l.colLinkTable[idx][subRow[0]] == "" {
-						l.colLinkTable[idx][subRow[0]] = "{" + subRow[1] + ":" + subRow[2] + "}"
+						l.colLinkTable[idx][subRow[0]] = "{\"" + subRow[1] + "\":" + subRow[2] + "}"
 					} else {
-						l.colLinkTable[idx][subRow[0]] = l.colLinkTable[idx][subRow[0]][:len(l.colLinkTable[idx][subRow[0]])-1] + "," + subRow[1] + ":" + subRow[2] + "}"
+						l.colLinkTable[idx][subRow[0]] = l.colLinkTable[idx][subRow[0]][:len(l.colLinkTable[idx][subRow[0]])-1] + ",\"" + subRow[1] + "\":" + subRow[2] + "}"
 					}
 				}
 			} else {
