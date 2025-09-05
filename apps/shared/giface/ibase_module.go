@@ -1,4 +1,4 @@
-package iface
+package giface
 
 type IModule interface {
 	init(player IEntity)

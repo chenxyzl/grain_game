@@ -1,4 +1,4 @@
-package constant1
+package constant
 
 const (
 	ParamToken = "token"

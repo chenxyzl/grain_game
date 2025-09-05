@@ -3,8 +3,9 @@ package excel_test
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/xuri/excelize/v2"
 	"testing"
+
+	"github.com/xuri/excelize/v2"
 )
 
 func TestReadExcel(t *testing.T) {

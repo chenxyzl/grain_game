@@ -1,8 +1,8 @@
 package internal
 
-import "github.com/chenxyzl/grain/actor"
+import "github.com/chenxyzl/grain"
 
-func (p *session) idleCheckSuccess(ctx actor.Context) {
+func (p *session) idleCheckSuccess(ctx grain.Context) {
 	if p.conn != nil {
 		p.conn.Close() // 链接断开时,actor会在外层被停止,这里不用管
 		p.conn = nil

@@ -20,7 +20,46 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// online--gateway通知player在线
+//Home节点上线(session重新向新的home注册)
+type HomeOnline struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *HomeOnline) Reset() {
+	*x = HomeOnline{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_inner_home_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HomeOnline) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HomeOnline) ProtoMessage() {}
+
+func (x *HomeOnline) ProtoReflect() protoreflect.Message {
+	mi := &file_inner_home_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HomeOnline.ProtoReflect.Descriptor instead.
+func (*HomeOnline) Descriptor() ([]byte, []int) {
+	return file_inner_home_proto_rawDescGZIP(), []int{0}
+}
+
+//online--gateway通知player在线
 type Online struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -30,7 +69,7 @@ type Online struct {
 func (x *Online) Reset() {
 	*x = Online{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[0]
+		mi := &file_inner_home_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -43,7 +82,7 @@ func (x *Online) String() string {
 func (*Online) ProtoMessage() {}
 
 func (x *Online) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[0]
+	mi := &file_inner_home_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,10 +95,10 @@ func (x *Online) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Online.ProtoReflect.Descriptor instead.
 func (*Online) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{0}
+	return file_inner_home_proto_rawDescGZIP(), []int{1}
 }
 
-// offline--gateway通知player离线
+//offline--gateway通知player离线
 type Offline struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -69,7 +108,7 @@ type Offline struct {
 func (x *Offline) Reset() {
 	*x = Offline{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[1]
+		mi := &file_inner_home_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -82,7 +121,7 @@ func (x *Offline) String() string {
 func (*Offline) ProtoMessage() {}
 
 func (x *Offline) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[1]
+	mi := &file_inner_home_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -95,10 +134,10 @@ func (x *Offline) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Offline.ProtoReflect.Descriptor instead.
 func (*Offline) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{1}
+	return file_inner_home_proto_rawDescGZIP(), []int{2}
 }
 
-// home监听player激活
+//home监听player激活
 type PlayerActiveWatch struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -108,7 +147,7 @@ type PlayerActiveWatch struct {
 func (x *PlayerActiveWatch) Reset() {
 	*x = PlayerActiveWatch{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[2]
+		mi := &file_inner_home_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -121,7 +160,7 @@ func (x *PlayerActiveWatch) String() string {
 func (*PlayerActiveWatch) ProtoMessage() {}
 
 func (x *PlayerActiveWatch) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[2]
+	mi := &file_inner_home_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -134,10 +173,10 @@ func (x *PlayerActiveWatch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlayerActiveWatch.ProtoReflect.Descriptor instead.
 func (*PlayerActiveWatch) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{2}
+	return file_inner_home_proto_rawDescGZIP(), []int{3}
 }
 
-// 发送个人邮件
+//发送个人邮件
 type SendMail struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -147,7 +186,7 @@ type SendMail struct {
 func (x *SendMail) Reset() {
 	*x = SendMail{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[3]
+		mi := &file_inner_home_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -160,7 +199,7 @@ func (x *SendMail) String() string {
 func (*SendMail) ProtoMessage() {}
 
 func (x *SendMail) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[3]
+	mi := &file_inner_home_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -173,10 +212,10 @@ func (x *SendMail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendMail.ProtoReflect.Descriptor instead.
 func (*SendMail) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{3}
+	return file_inner_home_proto_rawDescGZIP(), []int{4}
 }
 
-// 全局邮件监听
+//全局邮件监听
 type GlobalMailWatch struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -186,7 +225,7 @@ type GlobalMailWatch struct {
 func (x *GlobalMailWatch) Reset() {
 	*x = GlobalMailWatch{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[4]
+		mi := &file_inner_home_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -199,7 +238,7 @@ func (x *GlobalMailWatch) String() string {
 func (*GlobalMailWatch) ProtoMessage() {}
 
 func (x *GlobalMailWatch) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[4]
+	mi := &file_inner_home_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -212,7 +251,54 @@ func (x *GlobalMailWatch) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GlobalMailWatch.ProtoReflect.Descriptor instead.
 func (*GlobalMailWatch) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{4}
+	return file_inner_home_proto_rawDescGZIP(), []int{5}
+}
+
+type HomeOnline_Notify struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	HomeNodeId int32 `protobuf:"varint,1,opt,name=HomeNodeId,proto3" json:"HomeNodeId,omitempty"`
+}
+
+func (x *HomeOnline_Notify) Reset() {
+	*x = HomeOnline_Notify{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_inner_home_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *HomeOnline_Notify) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HomeOnline_Notify) ProtoMessage() {}
+
+func (x *HomeOnline_Notify) ProtoReflect() protoreflect.Message {
+	mi := &file_inner_home_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HomeOnline_Notify.ProtoReflect.Descriptor instead.
+func (*HomeOnline_Notify) Descriptor() ([]byte, []int) {
+	return file_inner_home_proto_rawDescGZIP(), []int{0, 0}
+}
+
+func (x *HomeOnline_Notify) GetHomeNodeId() int32 {
+	if x != nil {
+		return x.HomeNodeId
+	}
+	return 0
 }
 
 type Online_Request struct {
@@ -224,7 +310,7 @@ type Online_Request struct {
 func (x *Online_Request) Reset() {
 	*x = Online_Request{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[5]
+		mi := &file_inner_home_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -237,7 +323,7 @@ func (x *Online_Request) String() string {
 func (*Online_Request) ProtoMessage() {}
 
 func (x *Online_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[5]
+	mi := &file_inner_home_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -250,7 +336,7 @@ func (x *Online_Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Online_Request.ProtoReflect.Descriptor instead.
 func (*Online_Request) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{0, 0}
+	return file_inner_home_proto_rawDescGZIP(), []int{1, 0}
 }
 
 type Online_Reply struct {
@@ -262,7 +348,7 @@ type Online_Reply struct {
 func (x *Online_Reply) Reset() {
 	*x = Online_Reply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[6]
+		mi := &file_inner_home_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -275,7 +361,7 @@ func (x *Online_Reply) String() string {
 func (*Online_Reply) ProtoMessage() {}
 
 func (x *Online_Reply) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[6]
+	mi := &file_inner_home_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -288,7 +374,7 @@ func (x *Online_Reply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Online_Reply.ProtoReflect.Descriptor instead.
 func (*Online_Reply) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{0, 1}
+	return file_inner_home_proto_rawDescGZIP(), []int{1, 1}
 }
 
 type Offline_Notify struct {
@@ -300,7 +386,7 @@ type Offline_Notify struct {
 func (x *Offline_Notify) Reset() {
 	*x = Offline_Notify{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[7]
+		mi := &file_inner_home_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -313,7 +399,7 @@ func (x *Offline_Notify) String() string {
 func (*Offline_Notify) ProtoMessage() {}
 
 func (x *Offline_Notify) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[7]
+	mi := &file_inner_home_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -326,7 +412,7 @@ func (x *Offline_Notify) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Offline_Notify.ProtoReflect.Descriptor instead.
 func (*Offline_Notify) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{1, 0}
+	return file_inner_home_proto_rawDescGZIP(), []int{2, 0}
 }
 
 type PlayerActiveWatch_Notify struct {
@@ -341,7 +427,7 @@ type PlayerActiveWatch_Notify struct {
 func (x *PlayerActiveWatch_Notify) Reset() {
 	*x = PlayerActiveWatch_Notify{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[8]
+		mi := &file_inner_home_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -354,7 +440,7 @@ func (x *PlayerActiveWatch_Notify) String() string {
 func (*PlayerActiveWatch_Notify) ProtoMessage() {}
 
 func (x *PlayerActiveWatch_Notify) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[8]
+	mi := &file_inner_home_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -367,7 +453,7 @@ func (x *PlayerActiveWatch_Notify) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PlayerActiveWatch_Notify.ProtoReflect.Descriptor instead.
 func (*PlayerActiveWatch_Notify) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{2, 0}
+	return file_inner_home_proto_rawDescGZIP(), []int{3, 0}
 }
 
 func (x *PlayerActiveWatch_Notify) GetUid() uint64 {
@@ -395,7 +481,7 @@ type SendMail_Request struct {
 func (x *SendMail_Request) Reset() {
 	*x = SendMail_Request{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[9]
+		mi := &file_inner_home_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -408,7 +494,7 @@ func (x *SendMail_Request) String() string {
 func (*SendMail_Request) ProtoMessage() {}
 
 func (x *SendMail_Request) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[9]
+	mi := &file_inner_home_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -421,7 +507,7 @@ func (x *SendMail_Request) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendMail_Request.ProtoReflect.Descriptor instead.
 func (*SendMail_Request) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{3, 0}
+	return file_inner_home_proto_rawDescGZIP(), []int{4, 0}
 }
 
 func (x *SendMail_Request) GetMail() *MailTemplate {
@@ -440,7 +526,7 @@ type SendMail_Reply struct {
 func (x *SendMail_Reply) Reset() {
 	*x = SendMail_Reply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[10]
+		mi := &file_inner_home_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -453,7 +539,7 @@ func (x *SendMail_Reply) String() string {
 func (*SendMail_Reply) ProtoMessage() {}
 
 func (x *SendMail_Reply) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[10]
+	mi := &file_inner_home_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -466,7 +552,7 @@ func (x *SendMail_Reply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendMail_Reply.ProtoReflect.Descriptor instead.
 func (*SendMail_Reply) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{3, 1}
+	return file_inner_home_proto_rawDescGZIP(), []int{4, 1}
 }
 
 type GlobalMailWatch_Notify struct {
@@ -480,7 +566,7 @@ type GlobalMailWatch_Notify struct {
 func (x *GlobalMailWatch_Notify) Reset() {
 	*x = GlobalMailWatch_Notify{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_inner_home_proto_msgTypes[11]
+		mi := &file_inner_home_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -493,7 +579,7 @@ func (x *GlobalMailWatch_Notify) String() string {
 func (*GlobalMailWatch_Notify) ProtoMessage() {}
 
 func (x *GlobalMailWatch_Notify) ProtoReflect() protoreflect.Message {
-	mi := &file_inner_home_proto_msgTypes[11]
+	mi := &file_inner_home_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -506,7 +592,7 @@ func (x *GlobalMailWatch_Notify) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GlobalMailWatch_Notify.ProtoReflect.Descriptor instead.
 func (*GlobalMailWatch_Notify) Descriptor() ([]byte, []int) {
-	return file_inner_home_proto_rawDescGZIP(), []int{4, 0}
+	return file_inner_home_proto_rawDescGZIP(), []int{5, 0}
 }
 
 func (x *GlobalMailWatch_Notify) GetMail() *MailTemplate {
@@ -521,27 +607,31 @@ var File_inner_home_proto protoreflect.FileDescriptor
 var file_inner_home_proto_rawDesc = []byte{
 	0x0a, 0x10, 0x69, 0x6e, 0x6e, 0x65, 0x72, 0x2f, 0x68, 0x6f, 0x6d, 0x65, 0x2e, 0x70, 0x72, 0x6f,
 	0x74, 0x6f, 0x12, 0x03, 0x70, 0x62, 0x69, 0x1a, 0x12, 0x69, 0x6e, 0x6e, 0x65, 0x72, 0x2f, 0x63,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x1c, 0x0a, 0x06, 0x4f,
-	0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x1a, 0x09, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x07, 0x0a, 0x05, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x13, 0x0a, 0x07, 0x4f, 0x66, 0x66,
-	0x6c, 0x69, 0x6e, 0x65, 0x1a, 0x08, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x22, 0x5b,
-	0x0a, 0x11, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72, 0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x57, 0x61,
-	0x74, 0x63, 0x68, 0x1a, 0x46, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x12, 0x10, 0x0a,
-	0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x04, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12,
-	0x2a, 0x0a, 0x10, 0x6c, 0x61, 0x73, 0x74, 0x47, 0x6c, 0x6f, 0x62, 0x61, 0x6c, 0x4d, 0x61, 0x69,
-	0x6c, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x04, 0x52, 0x10, 0x6c, 0x61, 0x73, 0x74, 0x47,
-	0x6c, 0x6f, 0x62, 0x61, 0x6c, 0x4d, 0x61, 0x69, 0x6c, 0x49, 0x64, 0x22, 0x45, 0x0a, 0x08, 0x53,
-	0x65, 0x6e, 0x64, 0x4d, 0x61, 0x69, 0x6c, 0x1a, 0x30, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65,
-	0x73, 0x74, 0x12, 0x25, 0x0a, 0x04, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x11, 0x2e, 0x70, 0x62, 0x69, 0x2e, 0x4d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c,
-	0x61, 0x74, 0x65, 0x52, 0x04, 0x6d, 0x61, 0x69, 0x6c, 0x1a, 0x07, 0x0a, 0x05, 0x52, 0x65, 0x70,
-	0x6c, 0x79, 0x22, 0x42, 0x0a, 0x0f, 0x47, 0x6c, 0x6f, 0x62, 0x61, 0x6c, 0x4d, 0x61, 0x69, 0x6c,
-	0x57, 0x61, 0x74, 0x63, 0x68, 0x1a, 0x2f, 0x0a, 0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x12,
-	0x25, 0x0a, 0x04, 0x6d, 0x61, 0x69, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e,
-	0x70, 0x62, 0x69, 0x2e, 0x4d, 0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65,
-	0x52, 0x04, 0x6d, 0x61, 0x69, 0x6c, 0x42, 0x1a, 0x5a, 0x18, 0x67, 0x72, 0x61, 0x69, 0x6e, 0x5f,
-	0x67, 0x61, 0x6d, 0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x70,
-	0x62, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x36, 0x0a, 0x0a, 0x48,
+	0x6f, 0x6d, 0x65, 0x4f, 0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x1a, 0x28, 0x0a, 0x06, 0x4e, 0x6f, 0x74,
+	0x69, 0x66, 0x79, 0x12, 0x1e, 0x0a, 0x0a, 0x48, 0x6f, 0x6d, 0x65, 0x4e, 0x6f, 0x64, 0x65, 0x49,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x48, 0x6f, 0x6d, 0x65, 0x4e, 0x6f, 0x64,
+	0x65, 0x49, 0x64, 0x22, 0x1c, 0x0a, 0x06, 0x4f, 0x6e, 0x6c, 0x69, 0x6e, 0x65, 0x1a, 0x09, 0x0a,
+	0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x07, 0x0a, 0x05, 0x52, 0x65, 0x70, 0x6c,
+	0x79, 0x22, 0x13, 0x0a, 0x07, 0x4f, 0x66, 0x66, 0x6c, 0x69, 0x6e, 0x65, 0x1a, 0x08, 0x0a, 0x06,
+	0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x22, 0x5b, 0x0a, 0x11, 0x50, 0x6c, 0x61, 0x79, 0x65, 0x72,
+	0x41, 0x63, 0x74, 0x69, 0x76, 0x65, 0x57, 0x61, 0x74, 0x63, 0x68, 0x1a, 0x46, 0x0a, 0x06, 0x4e,
+	0x6f, 0x74, 0x69, 0x66, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x75, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x04, 0x52, 0x03, 0x75, 0x69, 0x64, 0x12, 0x2a, 0x0a, 0x10, 0x6c, 0x61, 0x73, 0x74, 0x47,
+	0x6c, 0x6f, 0x62, 0x61, 0x6c, 0x4d, 0x61, 0x69, 0x6c, 0x49, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x04, 0x52, 0x10, 0x6c, 0x61, 0x73, 0x74, 0x47, 0x6c, 0x6f, 0x62, 0x61, 0x6c, 0x4d, 0x61, 0x69,
+	0x6c, 0x49, 0x64, 0x22, 0x45, 0x0a, 0x08, 0x53, 0x65, 0x6e, 0x64, 0x4d, 0x61, 0x69, 0x6c, 0x1a,
+	0x30, 0x0a, 0x07, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x25, 0x0a, 0x04, 0x6d, 0x61,
+	0x69, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x70, 0x62, 0x69, 0x2e, 0x4d,
+	0x61, 0x69, 0x6c, 0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x52, 0x04, 0x6d, 0x61, 0x69,
+	0x6c, 0x1a, 0x07, 0x0a, 0x05, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x42, 0x0a, 0x0f, 0x47, 0x6c,
+	0x6f, 0x62, 0x61, 0x6c, 0x4d, 0x61, 0x69, 0x6c, 0x57, 0x61, 0x74, 0x63, 0x68, 0x1a, 0x2f, 0x0a,
+	0x06, 0x4e, 0x6f, 0x74, 0x69, 0x66, 0x79, 0x12, 0x25, 0x0a, 0x04, 0x6d, 0x61, 0x69, 0x6c, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x70, 0x62, 0x69, 0x2e, 0x4d, 0x61, 0x69, 0x6c,
+	0x54, 0x65, 0x6d, 0x70, 0x6c, 0x61, 0x74, 0x65, 0x52, 0x04, 0x6d, 0x61, 0x69, 0x6c, 0x42, 0x1a,
+	0x5a, 0x18, 0x67, 0x72, 0x61, 0x69, 0x6e, 0x5f, 0x67, 0x61, 0x6d, 0x65, 0x2f, 0x70, 0x72, 0x6f,
+	0x74, 0x6f, 0x2f, 0x67, 0x65, 0x6e, 0x2f, 0x70, 0x62, 0x69, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,
+	0x6f, 0x33,
 }
 
 var (
@@ -556,25 +646,27 @@ func file_inner_home_proto_rawDescGZIP() []byte {
 	return file_inner_home_proto_rawDescData
 }
 
-var file_inner_home_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_inner_home_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_inner_home_proto_goTypes = []interface{}{
-	(*Online)(nil),                   // 0: pbi.Online
-	(*Offline)(nil),                  // 1: pbi.Offline
-	(*PlayerActiveWatch)(nil),        // 2: pbi.PlayerActiveWatch
-	(*SendMail)(nil),                 // 3: pbi.SendMail
-	(*GlobalMailWatch)(nil),          // 4: pbi.GlobalMailWatch
-	(*Online_Request)(nil),           // 5: pbi.Online.Request
-	(*Online_Reply)(nil),             // 6: pbi.Online.Reply
-	(*Offline_Notify)(nil),           // 7: pbi.Offline.Notify
-	(*PlayerActiveWatch_Notify)(nil), // 8: pbi.PlayerActiveWatch.Notify
-	(*SendMail_Request)(nil),         // 9: pbi.SendMail.Request
-	(*SendMail_Reply)(nil),           // 10: pbi.SendMail.Reply
-	(*GlobalMailWatch_Notify)(nil),   // 11: pbi.GlobalMailWatch.Notify
-	(*MailTemplate)(nil),             // 12: pbi.MailTemplate
+	(*HomeOnline)(nil),               // 0: pbi.HomeOnline
+	(*Online)(nil),                   // 1: pbi.Online
+	(*Offline)(nil),                  // 2: pbi.Offline
+	(*PlayerActiveWatch)(nil),        // 3: pbi.PlayerActiveWatch
+	(*SendMail)(nil),                 // 4: pbi.SendMail
+	(*GlobalMailWatch)(nil),          // 5: pbi.GlobalMailWatch
+	(*HomeOnline_Notify)(nil),        // 6: pbi.HomeOnline.Notify
+	(*Online_Request)(nil),           // 7: pbi.Online.Request
+	(*Online_Reply)(nil),             // 8: pbi.Online.Reply
+	(*Offline_Notify)(nil),           // 9: pbi.Offline.Notify
+	(*PlayerActiveWatch_Notify)(nil), // 10: pbi.PlayerActiveWatch.Notify
+	(*SendMail_Request)(nil),         // 11: pbi.SendMail.Request
+	(*SendMail_Reply)(nil),           // 12: pbi.SendMail.Reply
+	(*GlobalMailWatch_Notify)(nil),   // 13: pbi.GlobalMailWatch.Notify
+	(*MailTemplate)(nil),             // 14: pbi.MailTemplate
 }
 var file_inner_home_proto_depIdxs = []int32{
-	12, // 0: pbi.SendMail.Request.mail:type_name -> pbi.MailTemplate
-	12, // 1: pbi.GlobalMailWatch.Notify.mail:type_name -> pbi.MailTemplate
+	14, // 0: pbi.SendMail.Request.mail:type_name -> pbi.MailTemplate
+	14, // 1: pbi.GlobalMailWatch.Notify.mail:type_name -> pbi.MailTemplate
 	2,  // [2:2] is the sub-list for method output_type
 	2,  // [2:2] is the sub-list for method input_type
 	2,  // [2:2] is the sub-list for extension type_name
@@ -590,7 +682,7 @@ func file_inner_home_proto_init() {
 	file_inner_common_proto_init()
 	if !protoimpl.UnsafeEnabled {
 		file_inner_home_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Online); i {
+			switch v := v.(*HomeOnline); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -602,7 +694,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Offline); i {
+			switch v := v.(*Online); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -614,7 +706,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PlayerActiveWatch); i {
+			switch v := v.(*Offline); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -626,7 +718,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SendMail); i {
+			switch v := v.(*PlayerActiveWatch); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -638,7 +730,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GlobalMailWatch); i {
+			switch v := v.(*SendMail); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -650,7 +742,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Online_Request); i {
+			switch v := v.(*GlobalMailWatch); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -662,7 +754,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Online_Reply); i {
+			switch v := v.(*HomeOnline_Notify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -674,7 +766,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Offline_Notify); i {
+			switch v := v.(*Online_Request); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -686,7 +778,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PlayerActiveWatch_Notify); i {
+			switch v := v.(*Online_Reply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -698,7 +790,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SendMail_Request); i {
+			switch v := v.(*Offline_Notify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -710,7 +802,7 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SendMail_Reply); i {
+			switch v := v.(*PlayerActiveWatch_Notify); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -722,6 +814,30 @@ func file_inner_home_proto_init() {
 			}
 		}
 		file_inner_home_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SendMail_Request); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_inner_home_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*SendMail_Reply); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_inner_home_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*GlobalMailWatch_Notify); i {
 			case 0:
 				return &v.state
@@ -740,7 +856,7 @@ func file_inner_home_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_inner_home_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

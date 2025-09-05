@@ -1,27 +1,28 @@
 package internal
 
 import (
-	"github.com/chenxyzl/grain/actor"
-	"grain_game/apps/home/internal/iface1"
+	"grain_game/apps/home/internal/iface"
 	"grain_game/apps/shared/common"
-	"grain_game/apps/shared/iface"
+	"grain_game/apps/shared/giface"
 	"grain_game/apps/shared/utils"
 	pbi "grain_game/proto/gen/inner"
 	"grain_game/proto/gen/ret"
 	"time"
+
+	"github.com/chenxyzl/grain"
 )
 
-var _ actor.IActor = (*Player)(nil)
+var _ grain.IActor = (*Player)(nil)
 
 type Player struct {
-	*iface.BaseEntity
-	modules    map[string]iface1.IPlayerModule
-	modulesSl  []iface1.IPlayerModule //for range
-	cancelTick actor.CancelScheduleFunc
+	*giface.BaseEntity
+	modules    map[string]iface.IPlayerModule
+	modulesSl  []iface.IPlayerModule //for range
+	cancelTick grain.CancelScheduleFunc
 }
 
 func NewPlayer() *Player {
-	return &Player{BaseEntity: iface.NewBaseEntity(), modules: make(map[string]iface1.IPlayerModule)}
+	return &Player{BaseEntity: giface.NewBaseEntity(), modules: make(map[string]iface.IPlayerModule)}
 }
 
 func (p *Player) Started() {
@@ -47,7 +48,7 @@ func (p *Player) PreStop() {
 	}
 }
 
-func (p *Player) Receive(ctx actor.Context) {
+func (p *Player) Receive(ctx grain.Context) {
 	defer utils.Recover(func(e any, trace string) {
 		if err, ok := e.(*ret.Error); ok {
 			//todo send err code to client

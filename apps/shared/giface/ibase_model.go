@@ -1,4 +1,4 @@
-package iface
+package giface
 
 type IModel interface {
 	Name() string

@@ -1,13 +1,14 @@
-package iface
+package giface
 
 import (
-	"github.com/chenxyzl/grain/actor"
 	"grain_game/apps/shared/utils"
 	"reflect"
+
+	"github.com/chenxyzl/grain"
 )
 
 type IEntity interface {
-	actor.IActor
+	grain.IActor
 	//RegisterModule 注册model
 	//注:重复注册相同名字的model会panic
 	//期望RegisterModule[T model](); 可惜go不支持
@@ -18,7 +19,7 @@ type IEntity interface {
 }
 
 type BaseEntity struct {
-	actor.BaseActor
+	grain.BaseActor
 	modules map[string]IModule
 }
 
@@ -30,7 +31,7 @@ func NewBaseEntity() *BaseEntity {
 
 func (e *BaseEntity) Started()                  {}
 func (e *BaseEntity) PreStop()                  {}
-func (e *BaseEntity) Receive(ctx actor.Context) {}
+func (e *BaseEntity) Receive(ctx grain.Context) {}
 
 func (e *BaseEntity) RegisterModule(module IModule) {
 	name := reflect.TypeOf(module).Elem().Name()

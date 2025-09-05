@@ -20,12 +20,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// 发送邮件 - toUid==1表示全局邮件
-// 全局邮件设计
-// 1.全局邮件挂在etcd/redis上
-// 2.home节点监听或者每分钟查询
-// 3.home发现有新邮件则本地广播给player
-// 4.本地player收到广播后,各自处理全局邮件
+//发送邮件 - toUid==1表示全局邮件
+//全局邮件设计
+//1.全局邮件挂在etcd/redis上
+//2.home节点监听或者每分钟查询
+//3.home发现有新邮件则本地广播给player
+//4.本地player收到广播后,各自处理全局邮件
 type GmSendMail struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache

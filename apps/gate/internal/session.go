@@ -1,24 +1,25 @@
 package internal
 
 import (
-	"github.com/chenxyzl/grain/actor"
 	pbi "grain_game/proto/gen/inner"
 	"grain_game/proto/gen/ret"
 	"net"
 	"time"
+
+	"github.com/chenxyzl/grain"
 )
 
-var _ actor.IActor = (*session)(nil)
+var _ grain.IActor = (*session)(nil)
 
 type session struct {
-	actor.BaseActor
-	wss             *actor.ActorRef
+	grain.BaseActor
+	wss             grain.ActorRef
 	conn            net.Conn
-	handler         func(ctx actor.Context)
-	idleTickStopper actor.CancelScheduleFunc
+	handler         func(ctx grain.Context)
+	idleTickStopper grain.CancelScheduleFunc
 }
 
-func newSession(wss *actor.ActorRef, conn net.Conn) *session {
+func newSession(wss grain.ActorRef, conn net.Conn) *session {
 	return &session{wss: wss, conn: conn}
 }
 
@@ -26,13 +27,14 @@ func (p *session) Started() {
 	p.Logger().Info("session started")
 	p.handler = p.UnAuth
 	p.resetIdleCheck()
+	//todo watch home change
 }
 
 func (p *session) PreStop() {
 	p.Logger().Info("session stopped")
 }
 
-func (p *session) Receive(ctx actor.Context) {
+func (p *session) Receive(ctx grain.Context) {
 	switch ctx.Message().(type) {
 	case *pbi.Tick30_Notify:
 		p.idleCheckSuccess(ctx)
@@ -48,7 +50,7 @@ func (p *session) Receive(ctx actor.Context) {
 	}
 }
 
-func (p *session) UnAuth(ctx actor.Context) {
+func (p *session) UnAuth(ctx grain.Context) {
 	switch msg := ctx.Message().(type) {
 	case *ret.ReqPack:
 		msg.GetRpcId()
@@ -59,7 +61,7 @@ func (p *session) UnAuth(ctx actor.Context) {
 	p.handler = p.Authed
 }
 
-func (p *session) Authed(ctx actor.Context) {
+func (p *session) Authed(ctx grain.Context) {
 
 }
 

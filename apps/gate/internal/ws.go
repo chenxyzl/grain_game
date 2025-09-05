@@ -3,34 +3,36 @@ package internal
 import (
 	"errors"
 	"fmt"
-	"github.com/chenxyzl/grain/actor"
-	"github.com/chenxyzl/grain/al/safemap"
-	"github.com/gobwas/ws"
-	"github.com/gobwas/ws/wsutil"
-	"github.com/golang/protobuf/proto"
-	"grain_game/apps/gate/internal/constant1"
+	"grain_game/apps/gate/internal/constant"
 	"grain_game/apps/shared/common"
 	"grain_game/apps/shared/config"
 	"grain_game/apps/shared/utils"
+	pbi "grain_game/proto/gen/inner"
 	"grain_game/proto/gen/ret"
 	"io"
 	"net"
 	"net/http"
 	"net/url"
+
+	"github.com/chenxyzl/grain"
+	"github.com/chenxyzl/grain/al/safemap"
+	"github.com/gobwas/ws"
+	"github.com/gobwas/ws/wsutil"
+	"google.golang.org/protobuf/proto"
 )
 
-var _ actor.IActor = (*WebsocketServer)(nil)
+var _ grain.IActor = (*WebsocketServer)(nil)
 
 type WebsocketServer struct {
-	actor.BaseActor
+	grain.BaseActor
 	path     string
 	host     string
 	port     string
-	sessions *safemap.SafeMap[string, *actor.ActorRef]
+	sessions *safemap.RWMap[string, grain.ActorRef]
 }
 
 func NewWebsocketServer(path, host, port string) *WebsocketServer {
-	return &WebsocketServer{path: path, host: host, port: port, sessions: safemap.NewM[string, *actor.ActorRef]()}
+	return &WebsocketServer{path: path, host: host, port: port, sessions: safemap.NewRWMap[string, grain.ActorRef]()}
 }
 
 func (wss *WebsocketServer) Started() {
@@ -53,21 +55,26 @@ func (wss *WebsocketServer) Started() {
 			}
 		}
 	}()
-	err = wss.System().GetProvider().SetNodeExtData(config.Get().GetGate().GetWssubkey(), ln.Addr().String())
+	err = wss.GetSystem().GetProvider().SetNodeExtData(config.Get().GetGate().GetWssubkey(), ln.Addr().String())
 	if err != nil {
 		panic(errors.Join(err, errors.New("websocket server set node ext data fail")))
 	}
+	//home change
+	wss.GetSystem().Subscribe(wss.Self(), &pbi.HomeOnline_Notify{})
 	wss.Logger().Info("websocket server start success", "websocket.addr", ln.Addr(), "websocket.addr", addr, "websocket.wsPath", wss.path)
 }
 
 func (wss *WebsocketServer) PreStop() {
-	//TODO implement me
-	panic("implement me")
+
 }
 
-func (wss *WebsocketServer) Receive(ctx actor.Context) {
-	//TODO implement me
-	panic("implement me")
+func (wss *WebsocketServer) Receive(ctx grain.Context) {
+	switch ctx.Message().(type) {
+	case *pbi.HomeOnline_Notify:
+		wss.Logger().Info("watch home node changed")
+	default:
+
+	}
 }
 
 func (wss *WebsocketServer) helpersHighLevelHandler(w http.ResponseWriter, r *http.Request) {
@@ -94,7 +101,7 @@ func (wss *WebsocketServer) helpersHighLevelHandler(w http.ResponseWriter, r *ht
 		return
 	}
 	//get token
-	token := m.Get(constant1.ParamToken)
+	token := m.Get(constant.ParamToken)
 	if token == "" {
 		wss.Logger().Error("session get token is nil", "uri", uri, "rq", rq.RawQuery, "m", m)
 		return
@@ -105,9 +112,9 @@ func (wss *WebsocketServer) helpersHighLevelHandler(w http.ResponseWriter, r *ht
 }
 
 func (wss *WebsocketServer) createSession(conn net.Conn) {
-	sess := wss.System().Spawn(func() actor.IActor { return newSession(wss.Self(), conn) }, actor.WithOptsKindName(common.SessionKind))
+	sess := wss.GetSystem().Spawn(func() grain.IActor { return newSession(wss.Self(), conn) }, grain.WithOptsKindName(common.SessionKind))
 	wss.sessions.Set(sess.GetId(), sess)
-	defer func() { wss.sessions.Delete(sess.GetId()); wss.System().Poison(sess) }()
+	defer func() { wss.sessions.Delete(sess.GetId()); wss.GetSystem().Poison(sess) }()
 	wss.Logger().Info("session created", "id", sess.GetId())
 	//read msg
 	for {
@@ -139,6 +146,6 @@ func (wss *WebsocketServer) createSession(conn net.Conn) {
 		if err != nil {
 			wss.Logger().Error("sess unmarshal err", "id", sess.GetId(), "err", err)
 		}
-		actor.NoEntrySend(wss.System(), sess, reqPack)
+		sess.Send(reqPack)
 	}
 }

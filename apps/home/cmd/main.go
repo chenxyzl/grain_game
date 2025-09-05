@@ -1,24 +1,26 @@
 package main
 
 import (
-	"github.com/chenxyzl/grain/actor"
 	"grain_game/apps/home/internal"
 	"grain_game/apps/shared/common"
 	"grain_game/apps/shared/config"
 	"grain_game/apps/shared/runner"
+	pbi "grain_game/proto/gen/inner"
+
+	"github.com/chenxyzl/grain"
 )
 
 func main() {
 	runner.Run(func() {
-		//cConfig
-		cConfig := actor.NewConfig(config.Get().GetApp(), config.Get().GetVersion(), config.Get().GetEtcd().ToList(),
-			actor.WithConfigKind(common.PlayerKind, func() actor.IActor { return internal.NewPlayer() }))
 		//system
-		system := actor.NewSystem[*actor.ProviderEtcd](cConfig)
+		system := grain.NewSystem(config.Get().GetApp(), config.Get().GetVersion(), config.Get().GetEtcd().ToList(),
+			grain.WithConfigKind(common.PlayerKind, func() grain.IActor { return internal.NewPlayer() }))
 		//start
 		system.Logger().Warn("system starting")
 		system.Start()
 		system.Logger().Warn("system started successfully")
+		//
+		system.PublishGlobal(&pbi.HomeOnline_Notify{})
 		//wait ctrl+c
 		system.WaitStopSignal()
 		//

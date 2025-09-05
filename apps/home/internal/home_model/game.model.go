@@ -1,8 +1,9 @@
 package home_model
 
 import (
-	"github.com/chenxyzl/gsgen/gsmodel"
 	"grain_game/apps/shared/common_model"
+
+	"github.com/chenxyzl/gsgen/gsmodel"
 )
 
 type Game struct {
@@ -14,25 +15,25 @@ type Game struct {
 // Bag 背包
 type Bag struct {
 	gsmodel.DirtyModel `bson:"-"`
-	items              *gsmodel.DMap[uint64, *common_model.AItem] `bson:"items"`
+	items              *gsmodel.DMap[uint64, *common_model.Item] `bson:"items"`
 }
 
 // Mail 邮件内容
 type Mail struct {
 	gsmodel.DirtyModel `bson:"-"`
-	uid                uint64                              `bson:"_id"`    //唯一id
-	tid                uint64                              `bson:"tid"`    //模板编号，决定以下参数如何使用
-	toUid              uint64                              `bson:"to_uid"` //是否需要？
-	fromUid            uint64                              `bson:"from_uid"`
-	fromName           string                              `bson:"from_name"`
-	title              string                              `bson:"title"`
-	content            string                              `bson:"content"`
-	rewards            *gsmodel.DList[*common_model.AItem] `bson:"rewards"`
-	params             *gsmodel.DMap[string, string]       `bson:"params"`
-	createTime         int64                               `bson:"create_time"`
-	readTime           bool                                `bson:"read_time"`    //存在则表示-已读
-	getTime            bool                                `bson:"get_time"`     //存在则表示-已领取
-	deletedTime        bool                                `bson:"deleted_time"` //存在则表示-已删除
+	uid                uint64                             `bson:"_id"`    //唯一id
+	tid                uint64                             `bson:"tid"`    //模板编号，决定以下参数如何使用
+	toUid              uint64                             `bson:"to_uid"` //是否需要？
+	fromUid            uint64                             `bson:"from_uid"`
+	fromName           string                             `bson:"from_name"`
+	title              string                             `bson:"title"`
+	content            string                             `bson:"content"`
+	rewards            *gsmodel.DList[*common_model.Item] `bson:"rewards"`
+	params             *gsmodel.DMap[string, string]      `bson:"params"`
+	createTime         int64                              `bson:"create_time"`
+	readTime           bool                               `bson:"read_time"`    //存在则表示-已读
+	getTime            bool                               `bson:"get_time"`     //存在则表示-已领取
+	deletedTime        bool                               `bson:"deleted_time"` //存在则表示-已删除
 }
 
 // Mailbox 邮箱

@@ -4,6 +4,13 @@ option  go_package = "grain_game/proto/gen/pbi";
 
 import "inner/common.proto";
 
+//Home节点上线(session重新向新的home注册)
+message HomeOnline {
+    message Notify {
+        int32 HomeNodeId = 1;
+    }
+}
+
 //online--gateway通知player在线
 message Online {
     message Request {}

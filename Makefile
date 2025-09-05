@@ -62,7 +62,7 @@ proto: version
 
 
 
-IgnoreModelRef := "grain_game/apps/shared/common_model,grain_game/apps/shared/common_model.AItem"
+IgnoreModelRef := "grain_game/apps/shared/common_model,grain_game/apps/shared/common_model.Item"
 model:version
 	gsgen_tools -d="$(CURRENT_DIR)/apps/shared/common_model/" -f=".model.go" -s -b
 	gsgen_tools -d="$(CURRENT_DIR)/apps/home/internal/home_model" -f=".model.go" -s -b -i=$(IgnoreModelRef)

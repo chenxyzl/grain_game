@@ -21,7 +21,7 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
-// per second
+//per second
 type Tick struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -60,7 +60,7 @@ func (*Tick) Descriptor() ([]byte, []int) {
 	return file_inner_common_proto_rawDescGZIP(), []int{0}
 }
 
-// per 30 second
+//per 30 second
 type Tick30 struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -99,7 +99,7 @@ func (*Tick30) Descriptor() ([]byte, []int) {
 	return file_inner_common_proto_rawDescGZIP(), []int{1}
 }
 
-// per 60 second
+//per 60 second
 type Tick60 struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -138,7 +138,7 @@ func (*Tick60) Descriptor() ([]byte, []int) {
 	return file_inner_common_proto_rawDescGZIP(), []int{2}
 }
 
-// mail模板
+//mail模板
 type MailTemplate struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
