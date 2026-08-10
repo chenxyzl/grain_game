@@ -146,6 +146,6 @@ func (wss *WebsocketServer) createSession(conn net.Conn) {
 		if err != nil {
 			wss.Logger().Error("sess unmarshal err", "id", sess.GetId(), "err", err)
 		}
-		sess.Send(reqPack)
+		sess.Tell(reqPack)
 	}
 }

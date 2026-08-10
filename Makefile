@@ -38,10 +38,10 @@ version:
 	@echo BUILD_TIME:$(BUILD_TIME)
 
 gate: version
-	$(BUILD_CMD) -o ./bin/gate apps/gate/main.go
+	$(BUILD_CMD) -o ./bin/gate apps/gate/cmd/main.go
 
 home: version
-	$(BUILD_CMD) -o ./bin/home apps/home/main.go
+	$(BUILD_CMD) -o ./bin/home apps/home/cmd/main.go
 
 clean:
 	cd bin && ./run.sh clean

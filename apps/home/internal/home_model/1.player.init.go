@@ -8,7 +8,7 @@ import (
 )
 
 func (player *Player) Init() error {
-	filter := bson.D{{"_id", player.uid}}
+	filter := bson.D{{Key: "_id", Value: player.uid}}
 	err := db.Collection("player").FindOne(context.TODO(), filter).Decode(player)
 	if err != nil {
 		return errors.Join(err, fmt.Errorf("load player base data err, uid:%d", player.uid))

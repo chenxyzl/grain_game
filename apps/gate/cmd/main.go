@@ -26,7 +26,7 @@ func main() {
 			panic("failed to spawn websocket server")
 		}
 		//wait ctrl+c
-		system.WaitStopSignal()
+		system.WaitStopSignal(nil, nil)
 		//
 		system.Logger().Warn("system stopped successfully")
 	})

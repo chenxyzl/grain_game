@@ -23,7 +23,7 @@ func TestMongo(t *testing.T) {
 	}
 	defer Close()
 
-	filter := bson.D{{"_id", 1}}
+	filter := bson.D{{Key: "_id", Value: 1}}
 	type TestStruct struct {
 		Id   uint64 `bson:"_id,omitempty"`
 		Name string `bson:"name"`
@@ -51,7 +51,7 @@ func TestMongo(t *testing.T) {
 	}
 	fmt.Println(res)
 
-	data, err := Transaction(func() (interface{}, error) {
+	data, err := Transaction(func() (any, error) {
 		res := &TestStruct{}
 		err = GetColByName("test").FindOne(context.Background(), filter).Decode(&res)
 		if err != nil {

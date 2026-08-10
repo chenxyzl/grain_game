@@ -13,7 +13,7 @@ import (
 )
 
 var _init int32 = 0
-var _url, dbName string
+var _url, _dbName string
 var _client *mongo.Client
 var _db *mongo.Database
 var _logger *slog.Logger
@@ -26,7 +26,7 @@ func GetColByName(colName string) *mongo.Collection {
 }
 
 func Init(url string, dbName string, poolSize uint64, logger *slog.Logger) error {
-	if atomic.CompareAndSwapInt32(&_init, 0, 1) {
+	if !atomic.CompareAndSwapInt32(&_init, 0, 1) {
 		return fmt.Errorf("repeated init mongo err, url:%v", _url)
 	}
 	// Rest of the code will go here
@@ -47,7 +47,7 @@ func Init(url string, dbName string, poolSize uint64, logger *slog.Logger) error
 	_client = client
 	_db = client.Database(dbName)
 	_url = url
-	dbName = dbName
+	_dbName = dbName
 	_logger = logger
 
 	_logger.Warn("connect to mongo success", "url", url, "dbName", dbName)
@@ -58,35 +58,35 @@ func Close() {
 	if !atomic.CompareAndSwapInt32(&_init, 1, 0) {
 		return
 	}
-	if _client != nil {
+	if _client == nil {
 		return
 	}
 	_logger.Warn("mongo stop...")
 	err := _client.Disconnect(context.TODO())
 	if err != nil {
-		_logger.Warn("mongo stop success", "url", _url, "dbName", dbName)
+		_logger.Error("mongo stop err", "url", _url, "dbName", _dbName, "err", err)
 	} else {
-		_logger.Error("mongo stop err", "url", _url, "dbName", dbName, "err", err)
+		_logger.Warn("mongo stop success", "url", _url, "dbName", _dbName)
 	}
 	_db = nil
 	_client = nil
 }
 
-func Transaction(f func() (interface{}, error)) (interface{}, error) {
+func Transaction(f func() (any, error)) (any, error) {
 	if _client == nil {
 		return nil, fmt.Errorf("mongo client not connect")
 	}
 	//
-	opts := options.Transaction().SetWriteConcern(writeconcern.New(writeconcern.WMajority()))
+	opts := options.Transaction().SetWriteConcern(writeconcern.Majority())
 	// Start a transaction
 	session, err := _client.StartSession()
 	if err != nil {
-		_logger.Error("Error starting a session:", err)
+		_logger.Error("Error starting a session", "err", err)
 		return nil, err
 	}
 	defer session.EndSession(context.Background())
 	// Define the transaction callback function
-	callback := func(sessionContext mongo.SessionContext) (interface{}, error) {
+	callback := func(sessionContext mongo.SessionContext) (any, error) {
 		return f()
 	}
 	// Execute the transaction

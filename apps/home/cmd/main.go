@@ -22,7 +22,7 @@ func main() {
 		//
 		system.PublishGlobal(&pbi.HomeOnline_Notify{})
 		//wait ctrl+c
-		system.WaitStopSignal()
+		system.WaitStopSignal(nil, nil)
 		//
 		system.Logger().Warn("system stopped successfully")
 	})
