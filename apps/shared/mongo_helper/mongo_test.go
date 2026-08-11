@@ -15,7 +15,8 @@ func TestMongo(t *testing.T) {
 	// Rest of the code will go here
 	// Set _client options 设置连接参数
 	//clientOptions := options.Client().ApplyURI("mongodb://root:xxxxxxxxxxxxxxxxxxxxxxx@172.20.52.158:41134/?connect=direct;authSource=admin")
-	url := "mongodb+srv://ichenzhl:<password>@cluster0.feqwf3z.mongodb.net/?retryWrites=true&w=majority"
+	//url := mongodb+srv://<account>:<password>@<url>/?retryWrites=true&w=majority
+	url := ""
 
 	err := Init(url, "test", 10, slog.Default())
 	if err != nil {
